@@ -1,10 +1,52 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+
+// Material UI Import
+import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+// import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+
+// Bring in Styles
+
+// const styles = ({
+//   container: {
+//     display: 'flex',
+//     flexWrap: 'wrap',
+//   },
+//   textField: {
+//     marginLeft: '0px',
+//     marginRight: '0px',
+//     width: 200,
+//   },
+//   dense: {
+//     marginTop: 19,
+//   },
+//   menu: {
+//     width: 200,
+//   },
+// });
+
+// Bring in MUI styling
+const styles = {
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  input: {
+    margin: '2em'
+  },
+};
 
 class RegisterPage extends Component {
   state = {
     username: '',
     password: '',
+    rider: '',
+    terrain: '',
+    experience: '',
+    city: '',
   };
 
   registerUser = (event) => {
@@ -16,10 +58,14 @@ class RegisterPage extends Component {
         payload: {
           username: this.state.username,
           password: this.state.password,
+          rider: this.state.rider,
+          terrain: this.state.terrain,
+          experience: this.state.experience,
+          city: this.state.city,
         },
       });
     } else {
-      this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
+      this.props.dispatch({ type: 'REGISTRATION_Input_ERROR' });
     }
   } // end registerUser
 
@@ -30,6 +76,7 @@ class RegisterPage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
         {this.props.errors.registrationMessage && (
@@ -45,7 +92,7 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="username">
               Username:
-              <input
+              <Input
                 type="text"
                 name="username"
                 value={this.state.username}
@@ -56,7 +103,7 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="password">
               Password:
-              <input
+              <Input
                 type="password"
                 name="password"
                 value={this.state.password}
@@ -65,7 +112,51 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
-            <input
+            <label htmlFor="rider">
+              Rider:
+              <Input
+                type="rider"
+                name="rider"
+                value={this.state.rider}
+                onChange={this.handleInputChangeFor('rider')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="terrain">
+              Terrain:
+              <Input
+                type="terrain"
+                name="terrain"
+                value={this.state.terrain}
+                onChange={this.handleInputChangeFor('terrain')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="experience">
+              Experience:
+              <Input
+                type="number"
+                name="experience"
+                value={this.state.experience}
+                onChange={this.handleInputChangeFor('experience')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="city">
+              City:
+              <Input
+                type="city"
+                name="city"
+                value={this.state.city}
+                onChange={this.handleInputChangeFor('city')}
+              />
+            </label>
+          </div>
+          <div>
+            <Input
               className="register"
               type="submit"
               name="submit"
@@ -74,18 +165,20 @@ class RegisterPage extends Component {
           </div>
         </form>
         <center>
-          <button
+          <Button
             type="button"
             className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
+            onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
           >
             Login
-          </button>
+          </Button>
         </center>
       </div>
     );
   }
 }
+
+
 
 // Instead of taking everything from state, we just want the error messages.
 // if you wanted you could write this code like this:
@@ -94,5 +187,9 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(RegisterPage);
+RegisterPage.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(RegisterPage));
 
