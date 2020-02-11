@@ -81,6 +81,7 @@ class RegisterPage extends Component {
               Email:
               <Input
                 type="text"
+                name= "username"
                 placeholder="    Email@email.com"
                 className={classes.input}
                 value={this.state.username}
@@ -93,6 +94,7 @@ class RegisterPage extends Component {
               Password:
               <Input
                 type="password"
+                name="password"
                 className={classes.input}
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
@@ -104,6 +106,7 @@ class RegisterPage extends Component {
               Rider:
               <Input
                 type="rider"
+                name="rider"
                 placeholder="    eg. Skier, Boarder, Racer"
                 className={classes.input}
                 value={this.state.rider}
@@ -116,6 +119,7 @@ class RegisterPage extends Component {
               Terrain:
               <Input
                 type="terrain"
+                name="terrain"
                 placeholder="    eg. Park, Race, Back Country"
                 className={classes.input}
                 value={this.state.terrain}
@@ -146,6 +150,7 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
+            {/* put the input and btn in own div and apply styling; change register input into a btn? */}
             <Input
               className="register"
               type="submit"

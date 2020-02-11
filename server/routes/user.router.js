@@ -22,11 +22,14 @@ router.post('/register', (req, res, next) => {
   const terrain = req.body.terrain;
   const experience = req.body.experience;
   const city = req.body.city;
-
-  const queryText = 'INSERT INTO "user" (username, password, rider, terrain, experience, city) VALUES ($1, $2, $3, $4, $5, $6) RETURNING Id';
+  console.log(req.body);
+  const queryText = 'INSERT INTO "user" (username, password, rider, terrain, experience, city) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id';
   pool.query(queryText, [username, password, rider, terrain, experience, city])
     .then(() => res.sendStatus(201))
-    .catch(() => res.sendStatus(500));
+    .catch((err) => {
+      console.log(err)
+      res.sendStatus(500)
+    });
 });
 
 // Handles login form authenticate/login POST
