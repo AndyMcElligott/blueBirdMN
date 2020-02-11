@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './RegisterPage.css'
 
 // Material UI Import
 import Button from '@material-ui/core/Button';
@@ -8,35 +9,21 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 
-// Bring in Styles
-
-// const styles = ({
-//   container: {
-//     display: 'flex',
-//     flexWrap: 'wrap',
-//   },
-//   textField: {
-//     marginLeft: '0px',
-//     marginRight: '0px',
-//     width: 200,
-//   },
-//   dense: {
-//     marginTop: 19,
-//   },
-//   menu: {
-//     width: 200,
-//   },
-// });
 
 // Bring in MUI styling
 const styles = {
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    textAlign: 'center',
   },
   input: {
-    margin: '2em'
+    margin: '0px',
+    textAlign: 'left'
   },
+  Button: {
+    display: 'flex'
+  }
 };
 
 class RegisterPage extends Component {
@@ -89,12 +76,13 @@ class RegisterPage extends Component {
         )}
         <form onSubmit={this.registerUser}>
           <h1>Register User</h1>
-          <div>
+          <div className={classes.container}>
             <label htmlFor="username">
-              Username:
+              Email:
               <Input
                 type="text"
-                name="username"
+                placeholder="    Email@email.com"
+                className={classes.input}
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
@@ -105,7 +93,7 @@ class RegisterPage extends Component {
               Password:
               <Input
                 type="password"
-                name="password"
+                className={classes.input}
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
@@ -116,7 +104,8 @@ class RegisterPage extends Component {
               Rider:
               <Input
                 type="rider"
-                name="rider"
+                placeholder="    eg. Skier, Boarder, Racer"
+                className={classes.input}
                 value={this.state.rider}
                 onChange={this.handleInputChangeFor('rider')}
               />
@@ -127,7 +116,8 @@ class RegisterPage extends Component {
               Terrain:
               <Input
                 type="terrain"
-                name="terrain"
+                placeholder="    eg. Park, Race, Back Country"
+                className={classes.input}
                 value={this.state.terrain}
                 onChange={this.handleInputChangeFor('terrain')}
               />

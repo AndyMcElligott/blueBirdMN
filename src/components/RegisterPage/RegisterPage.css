@@ -1,0 +1,11 @@
+/* .email {
+    text-align: center;
+}; */
+
+/* input {
+    text-align: left;
+} */
+
+input::placeholder {
+    font-size: .75em;
+}
