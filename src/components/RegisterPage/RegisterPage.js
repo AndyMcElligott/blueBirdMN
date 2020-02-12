@@ -5,26 +5,30 @@ import './RegisterPage.css'
 // Material UI Import
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-// import classNames from 'classnames';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
 
 // Bring in MUI styling
-const styles = {
+const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    textAlign: 'center',
   },
-  input: {
-    margin: '0px',
-    textAlign: 'left'
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
   },
-  Button: {
-    display: 'flex'
-  }
-};
+  dense: {
+    marginTop: 16,
+  },
+  menu: {
+    width: 200,
+  },
+});
 
 class RegisterPage extends Component {
   state = {
@@ -64,6 +68,7 @@ class RegisterPage extends Component {
 
   render() {
     const { classes } = this.props;
+
     return (
       <div>
         {this.props.errors.registrationMessage && (
@@ -74,18 +79,21 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <form onSubmit={this.registerUser}>
+        <form onSubmit={this.registerUser} className={classes.container} noValidate autoComplete="off">
           <h1>Register User</h1>
           <div className={classes.container}>
             <label htmlFor="username">
               Email:
-              <Input
+              <TextField
                 type="text"
                 name= "username"
                 placeholder="    Email@email.com"
-                className={classes.input}
+                // className={classes.input}
+                className={classes.textField}
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
+                margin="normal"
+                variant="outlined"
               />
             </label>
           </div>
