@@ -17,6 +17,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LocalHills from '../LocalHills/LocalHills';
+import AddHill from '../AddHill/AddHill';
 
 import './App.css';
 
@@ -55,6 +56,12 @@ class App extends Component {
               exact
               path="/LocalHills"
               component={LocalHills}
+            />
+            {/* Admin Add Hill; only func it Admin logged in */}
+            <ProtectedRoute
+              exact
+              path="/AddHill"
+              component={AddHill}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

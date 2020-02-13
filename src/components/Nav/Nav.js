@@ -22,6 +22,9 @@ const Nav = (props) => (
           <Link className="nav-link" to="/LocalHills">
             Local Hills
           </Link>
+          <Link className="nav-link" to="/AddHill">
+            Add Hill
+          </Link>
           <LogOutButton className="nav-link"/>
         </>
       )}
