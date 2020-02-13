@@ -27,10 +27,12 @@ const styles = theme => ({
         maxWidth: 400,
         marginLeft: '5em',
         marginTop: '2em',
+        // direction: 'grid'
     },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
+        // display: 'flex',
     },
     actions: {
         display: 'flex',
@@ -64,23 +66,27 @@ class LocalHills extends Component {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
+    handleClick = () => {
+        console.log('handleClick')
+    }
+
     render() {
         const { classes } = this.props;
 
         return (
-            <>
+            <div style={{display:'flex'}}>
                 <Card className={classes.card} >
                     <CardHeader
                         avatar={
                             <Avatar aria-label="Buck Hill" className={classes.avatar}>
-                                B
+                                BH
                             </Avatar>
                         }
                         title="Buck Hill"
                     />
                     <CardMedia
                         className={classes.media}
-                        image="https://i0.wp.com/buckhill.com/wp-content/uploads/2018/06/BuckHill-HeadOnly-3Color.jpg?fit=650%2C645&ssl=1"
+                        image="https://res.cloudinary.com/liftopia/image/upload/c_fit,d_defaults:default_logo_1.png,f_auto,h_980,q_auto,w_980/v1/production/trail_maps/db393285e1fe5bd29082415b6e3c772b.jpg"
                         title="Buck Hill"
                     />
                     {/* <CardContent>
@@ -91,13 +97,11 @@ class LocalHills extends Component {
                     <CardActions className={classes.actions} disableActionSpacing>
                         <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
                             <Chip
-                                avatar={<Avatar>BH</Avatar>}
-                                label="More Info"
-                                clickable
-                                className={classes.chip}
-                                color="primary"
-                                // onDelete={handleDelete}
-                                // deleteIcon={<DoneIcon />}
+                                //   avatar={<Avatar>MB</Avatar>}
+                                  label="More Info"
+                                  onClick={this.handleClick}
+                                  className={classes.chip}
+                                  color="primary"
                             />
                         </IconButton>
                         <IconButton
@@ -138,24 +142,25 @@ class LocalHills extends Component {
                     <CardHeader
                         avatar={
                             <Avatar aria-label="Buck Hill" className={classes.avatar}>
-                                B
+                                AA
                 </Avatar>
                         }
-                        title="Buck Hill"
+                        title="Afton Alps"
                     />
                     <CardMedia
                         className={classes.media}
-                        image="https://i0.wp.com/buckhill.com/wp-content/uploads/2018/06/BuckHill-HeadOnly-3Color.jpg?fit=650%2C645&ssl=1"
+                        image="https://i.pinimg.com/originals/eb/8b/e3/eb8be3e666283f10b64a66a0b51d78a9.jpg"
                         title="Buck Hill"
                     />
-                    {/* <CardContent>
-            <Typography component="p">
-                AAAAAAAAAA
-            </Typography>
-            </CardContent> */}
                     <CardActions className={classes.actions} disableActionSpacing>
-                        <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
-                            <HomeIcon />
+                    <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
+                            <Chip
+                                //   avatar={<Avatar>MB</Avatar>}
+                                  label="More Info"
+                                  onClick={this.handleClick}
+                                  className={classes.chip}
+                                  color="primary"
+                            />
                         </IconButton>
                         <IconButton
                             className={classnames(classes.expand, {
@@ -169,26 +174,26 @@ class LocalHills extends Component {
                         </IconButton>
                     </CardActions>
                     <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                        <CardContent>
+                        {/* <CardContent>
                             {/* <Typography paragraph>Method:</Typography> */}
-                            <Typography paragraph>
+                            {/* <Typography paragraph>
                                 Buck Hill is a ski and snowboard hill in Burnsville, Minnesota, a suburb south of Minneapolis. It is one of three ski areas in the Twin Cities metropolitan area. Buck Hill opened in 1954 and offers ski, snowboard, and tubing trails.
-                </Typography>
+                            </Typography>
                             <Typography paragraph>
                                 Location: Burnsville, Minnesota, U.S.
-                </Typography>
+                            </Typography>
                             <Typography paragraph>
                                 Night skiing: every night
-                </Typography>
+                            </Typography>
                             <Typography>
                                 Base elevation: 949 ft (289 m)
-                <br />
+                                <br />
                                 Vertical: 262 ft (80 m)
-                </Typography>
-                        </CardContent>
+                            </Typography> */}
+                        {/* </CardContent> */} 
                     </Collapse>
                 </Card>
-            </>
+            </div>
         );
     }
 }
