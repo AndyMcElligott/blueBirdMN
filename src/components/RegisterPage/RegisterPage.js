@@ -10,9 +10,18 @@ import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import teal from '@material-ui/core/colors/teal';
 
 
 // Bring in MUI styling
+const theme = createMuiTheme({
+  palette: {
+    primary: teal,
+    secondary: teal
+  }
+})
+
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -79,10 +88,12 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <form onSubmit={this.registerUser} className={classes.container} noValidate autoComplete="off">
+
+        <form onSubmit={this.registerUser} 
+        className={classes.container} noValidate autoComplete="off">
           <h1>Register User</h1>
           <div className={classes.container}>
-            <label htmlFor="username">
+            {/* <label htmlFor="username"> */}
               Email:
               <TextField
                 type="text"
@@ -95,9 +106,9 @@ class RegisterPage extends Component {
                 margin="normal"
                 variant="outlined"
               />
-            </label>
+            {/* </label> */}
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="password">
               Password:
               <Input
@@ -158,14 +169,14 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
-            {/* put the input and btn in own div and apply styling; change register input into a btn? */}
+            put the input and btn in own div and apply styling; change register input into a btn?
             <Input
               className="register"
               type="submit"
               name="submit"
               value="Register"
             />
-          </div>
+          </div> */}
         </form>
         <center>
           <Button

@@ -21,6 +21,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 // import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Chip from '@material-ui/core/Chip';
 import { blue } from '@material-ui/core/colors';
+import InfoIcon from '@material-ui/icons/Info';
 
 const styles = theme => ({
     card: {
@@ -60,7 +61,16 @@ const styles = theme => ({
 
 class LocalHills extends Component {
 
-    state = { expanded: false };
+    // fix state so only one card expands and not all the cards... 
+
+    state = { 
+        expanded: false, 
+        hills: [{
+            title: 'Buck Hill',
+            description: '',
+        }],
+
+    };
 
     handleExpandClick = () => {
         this.setState(state => ({ expanded: !state.expanded }));
@@ -89,11 +99,6 @@ class LocalHills extends Component {
                         image="https://res.cloudinary.com/liftopia/image/upload/c_fit,d_defaults:default_logo_1.png,f_auto,h_980,q_auto,w_980/v1/production/trail_maps/db393285e1fe5bd29082415b6e3c772b.jpg"
                         title="Buck Hill"
                     />
-                    {/* <CardContent>
-            <Typography component="p">
-                AAAAAAAAAA
-            </Typography>
-            </CardContent> */}
                     <CardActions className={classes.actions} disableActionSpacing>
                         <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
                             <Chip
@@ -120,18 +125,18 @@ class LocalHills extends Component {
                             {/* <Typography paragraph>Method:</Typography> */}
                             <Typography paragraph>
                                 Buck Hill is a ski and snowboard hill in Burnsville, Minnesota, a suburb south of Minneapolis. It is one of three ski areas in the Twin Cities metropolitan area. Buck Hill opened in 1954 and offers ski, snowboard, and tubing trails.
-                </Typography>
+                            </Typography>
                             <Typography paragraph>
                                 Location: Burnsville, Minnesota, U.S.
-                </Typography>
+                            </Typography>
                             <Typography paragraph>
                                 Night skiing: every night
-                </Typography>
+                            </Typography>
                             <Typography>
                                 Base elevation: 949 ft (289 m)
-                <br />
+                            <br />
                                 Vertical: 262 ft (80 m)
-                </Typography>
+                            </Typography>
                         </CardContent>
                     </Collapse>
                 </Card>
