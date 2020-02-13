@@ -61,6 +61,7 @@ const styles = theme => ({
 
 class LocalHills extends Component {
 
+
     // fix state so only one card expands and not all the cards... 
 
     state = { 
@@ -72,15 +73,35 @@ class LocalHills extends Component {
 
     };
 
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_HILLS' })
+      }
+
+    state = { expanded: false };
+
+
     handleExpandClick = () => {
         this.setState(state => ({ expanded: !state.expanded }));
     };
+
+    details = (id) => {
+        this.props.dispatch({
+            type: 'GET_HILLS',
+            payload: id
+        })
+        this.props.history.push(`/details`)
+    }
 
     handleClick = () => {
         console.log('handleClick')
     }
 
     render() {
+
+        let id= this.props.id
+        let index = id -1
+        let hill = this.props.reduxStore.hill[index]
+
         const { classes } = this.props;
 
         return (
@@ -92,7 +113,7 @@ class LocalHills extends Component {
                                 BH
                             </Avatar>
                         }
-                        title="Buck Hill"
+                        title={hill.name}
                     />
                     <CardMedia
                         className={classes.media}
