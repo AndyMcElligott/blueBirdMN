@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import HillItem from '../HillItem/HillItem'
 
 // MUI imports
 import PropTypes from 'prop-types';
@@ -23,74 +24,12 @@ import Chip from '@material-ui/core/Chip';
 import { blue } from '@material-ui/core/colors';
 import InfoIcon from '@material-ui/icons/Info';
 
-const styles = theme => ({
-    card: {
-        maxWidth: 400,
-        marginLeft: '5em',
-        marginTop: '2em',
-        // direction: 'grid'
-    },
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-        // display: 'flex',
-    },
-    actions: {
-        display: 'flex',
-    },
-    expand: {
-        transform: 'rotate(0deg)',
-        marginLeft: 'auto',
-        transition: theme.transitions.create('transform', {
-            duration: theme.transitions.duration.shortest,
-        }),
-    },
-    expandOpen: {
-        transform: 'rotate(180deg)',
-    },
-    avatar: {
-        backgroundColor: blue[900],
-    },
-    iconHover: {
-        margin: theme.spacing.unit * 2,
-        '&:hover': {
-            color: red[800],
-        },
-    },
-});
+
 
 class LocalHills extends Component {
 
 
     // fix state so only one card expands and not all the cards... 
-
-    state = { 
-        expanded: false, 
-        hills: [{
-            title: 'Buck Hill',
-            description: '',
-        }],
-
-    };
-
-    componentDidMount() {
-        this.props.dispatch({ type: 'FETCH_HILLS' })
-      }
-
-    state = { expanded: false };
-
-
-    handleExpandClick = () => {
-        this.setState(state => ({ expanded: !state.expanded }));
-    };
-
-    details = (id) => {
-        this.props.dispatch({
-            type: 'GET_HILLS',
-            payload: id
-        })
-        this.props.history.push(`/details`)
-    }
 
     handleClick = () => {
         console.log('handleClick')
@@ -98,138 +37,143 @@ class LocalHills extends Component {
 
     render() {
 
-        let id= this.props.id
-        let index = id -1
-        let hill = this.props.reduxStore.hill[index]
+        // let id= this.props.id
+        // // let index = id -1
+        // let hill = this.props.reduxStore.hill
 
-        const { classes } = this.props;
+        
 
         return (
-            <div style={{display:'flex'}}>
-                <Card className={classes.card} >
-                    <CardHeader
-                        avatar={
-                            <Avatar aria-label="Buck Hill" className={classes.avatar}>
-                                BH
-                            </Avatar>
-                        }
-                        title={hill.name}
-                    />
-                    <CardMedia
-                        className={classes.media}
-                        image="https://res.cloudinary.com/liftopia/image/upload/c_fit,d_defaults:default_logo_1.png,f_auto,h_980,q_auto,w_980/v1/production/trail_maps/db393285e1fe5bd29082415b6e3c772b.jpg"
-                        title="Buck Hill"
-                    />
-                    <CardActions className={classes.actions} disableActionSpacing>
-                        <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
-                            <Chip
-                                //   avatar={<Avatar>MB</Avatar>}
-                                  label="More Info"
-                                  onClick={this.handleClick}
-                                  className={classes.chip}
-                                  color="primary"
-                            />
-                        </IconButton>
-                        <IconButton
-                            className={classnames(classes.expand, {
-                                [classes.expandOpen]: this.state.expanded,
-                            })}
-                            onClick={this.handleExpandClick}
-                            aria-expanded={this.state.expanded}
-                            aria-label="Show more"
-                        >
-                            <ExpandMoreIcon />
-                        </IconButton>
-                    </CardActions>
-                    <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                        <CardContent>
-                            {/* <Typography paragraph>Method:</Typography> */}
-                            <Typography paragraph>
-                                Buck Hill is a ski and snowboard hill in Burnsville, Minnesota, a suburb south of Minneapolis. It is one of three ski areas in the Twin Cities metropolitan area. Buck Hill opened in 1954 and offers ski, snowboard, and tubing trails.
-                            </Typography>
-                            <Typography paragraph>
-                                Location: Burnsville, Minnesota, U.S.
-                            </Typography>
-                            <Typography paragraph>
-                                Night skiing: every night
-                            </Typography>
-                            <Typography>
-                                Base elevation: 949 ft (289 m)
-                            <br />
-                                Vertical: 262 ft (80 m)
-                            </Typography>
-                        </CardContent>
-                    </Collapse>
-                </Card>
-
-                {/* next card */}
-
-                <Card className={classes.card} >
-                    <CardHeader
-                        avatar={
-                            <Avatar aria-label="Buck Hill" className={classes.avatar}>
-                                AA
-                </Avatar>
-                        }
-                        title="Afton Alps"
-                    />
-                    <CardMedia
-                        className={classes.media}
-                        image="https://i.pinimg.com/originals/eb/8b/e3/eb8be3e666283f10b64a66a0b51d78a9.jpg"
-                        title="Buck Hill"
-                    />
-                    <CardActions className={classes.actions} disableActionSpacing>
-                    <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
-                            <Chip
-                                //   avatar={<Avatar>MB</Avatar>}
-                                  label="More Info"
-                                  onClick={this.handleClick}
-                                  className={classes.chip}
-                                  color="primary"
-                            />
-                        </IconButton>
-                        <IconButton
-                            className={classnames(classes.expand, {
-                                [classes.expandOpen]: this.state.expanded,
-                            })}
-                            onClick={this.handleExpandClick}
-                            aria-expanded={this.state.expanded}
-                            aria-label="Show more"
-                        >
-                            <ExpandMoreIcon />
-                        </IconButton>
-                    </CardActions>
-                    <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                        {/* <CardContent>
-                            {/* <Typography paragraph>Method:</Typography> */}
-                            {/* <Typography paragraph>
-                                Buck Hill is a ski and snowboard hill in Burnsville, Minnesota, a suburb south of Minneapolis. It is one of three ski areas in the Twin Cities metropolitan area. Buck Hill opened in 1954 and offers ski, snowboard, and tubing trails.
-                            </Typography>
-                            <Typography paragraph>
-                                Location: Burnsville, Minnesota, U.S.
-                            </Typography>
-                            <Typography paragraph>
-                                Night skiing: every night
-                            </Typography>
-                            <Typography>
-                                Base elevation: 949 ft (289 m)
-                                <br />
-                                Vertical: 262 ft (80 m)
-                            </Typography> */}
-                        {/* </CardContent> */} 
-                    </Collapse>
-                </Card>
+            <div style={{ display: 'flex' } }>
+                {this.props.reduxStore.hill.map(hill => {
+                    return (
+                        <HillItem id={hill.id} key={hill.id} hill={hill}/>
+                    )
+                })
+                }
+    
+                
             </div>
-        );
+        )
+
+
+        // <Card className={classes.card} >
+        //             <CardHeader
+        //                 avatar={
+        //                     <Avatar aria-label="Buck Hill" className={classes.avatar}>
+        //                         BH
+        //                     </Avatar>
+        //                 }
+        //                 title={hill.name}
+        //             />
+        //             <CardMedia
+        //                 className={classes.media}
+                   
+
+        //             />
+        //             <CardActions className={classes.actions} disableActionSpacing>
+        //                 <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
+        //                     <Chip
+        //                         //   avatar={<Avatar>MB</Avatar>}
+        //                         label="More Info"
+        //                         onClick={this.handleClick}
+        //                         className={classes.chip}
+        //                         color="primary"
+        //                     />
+        //                 </IconButton>
+        //                 <IconButton
+        //                     className={classnames(classes.expand, {
+        //                         [classes.expandOpen]: this.state.expanded,
+        //                     })}
+        //                     onClick={this.handleExpandClick}
+        //                     aria-expanded={this.state.expanded}
+        //                     aria-label="Show more"
+        //                 >
+        //                     <ExpandMoreIcon />
+        //                 </IconButton>
+        //             </CardActions>
+        //             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+        //                 <CardContent>
+        //                     {/* <Typography paragraph>Method:</Typography> */}
+        //                     <Typography paragraph>
+        //                         {/* pull info from DB */}
+        //                     </Typography>
+        //                     <Typography paragraph>
+        //                         {/* pull location from DB */}
+        //                     </Typography>
+        //                     <Typography paragraph>
+        //                         {/* pull night from DB */}
+        //                     </Typography>
+        //                 </CardContent>
+        //             </Collapse>
+        //         </Card>
+
+            // <Card className={classes.card} >
+            //     <CardHeader
+            //         avatar={
+            //             <Avatar aria-label="Buck Hill" className={classes.avatar}>
+            //                 AA
+            // </Avatar>
+            //         }
+            //         title="Afton Alps"
+            //     />
+            //     <CardMedia
+            //         className={classes.media}
+            //         image="https://i.pinimg.com/originals/eb/8b/e3/eb8be3e666283f10b64a66a0b51d78a9.jpg"
+            //         title="Buck Hill"
+            //     />
+            //     <CardActions className={classes.actions} disableActionSpacing>
+            //     <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
+            //             <Chip
+            //                 //   avatar={<Avatar>MB</Avatar>}
+            //                   label="More Info"
+            //                   onClick={this.handleClick}
+            //                   className={classes.chip}
+            //                   color="primary"
+            //             />
+            //         </IconButton>
+            //         <IconButton
+            //             className={classnames(classes.expand, {
+            //                 [classes.expandOpen]: this.state.expanded,
+            //             })}
+            //             onClick={this.handleExpandClick}
+            //             aria-expanded={this.state.expanded}
+            //             aria-label="Show more"
+            //         >
+            //             <ExpandMoreIcon />
+            //         </IconButton>
+            //     </CardActions>
+            //     <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+            //         {/* <CardContent>
+            //             {/* <Typography paragraph>Method:</Typography> */}
+            //             {/* <Typography paragraph>
+            //                 Buck Hill is a ski and snowboard hill in Burnsville, Minnesota, a suburb south of Minneapolis. It is one of three ski areas in the Twin Cities metropolitan area. Buck Hill opened in 1954 and offers ski, snowboard, and tubing trails.
+            //             </Typography>
+            //             <Typography paragraph>
+            //                 Location: Burnsville, Minnesota, U.S.
+            //             </Typography>
+            //             <Typography paragraph>
+            //                 Night skiing: every night
+            //             </Typography>
+            //             <Typography>
+            //                 Base elevation: 949 ft (289 m)
+            //                 <br />
+            //                 Vertical: 262 ft (80 m)
+            //             </Typography> */}
+            //         {/* </CardContent> */} 
+            //     </Collapse>
+            // </Card>
+            // </div>
+        
     }
 }
 
-const mapStateToProps = state => ({
-    errors: state.errors,
+const mapStateToProps = (reduxStore) => ({
+    reduxStore
 });
 
 LocalHills.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(LocalHills));
+export default connect(mapStateToProps)(LocalHills);
