@@ -7,7 +7,7 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM "hills";'
+    const queryText = 'SELECT * FROM "hill";'
     console.log('in hills router.get', req.body)
     pool.query(queryText)
     .then( result => {

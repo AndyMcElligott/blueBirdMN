@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 // MUI imports
 import PropTypes from 'prop-types';
@@ -59,31 +61,19 @@ const styles = theme => ({
     },
 });
 
-// details = (id) => {
+// info = (id) => {
 //     this.props.dispatch({
 //         type: 'GET_HILLS',
 //         payload: id
 //     })
-//     this.props.history.push(`/details`)
+//     this.props.history.push(`/infoPage`)
 // }
 
 class HillItem extends Component {
 
     state = {
         expanded: false,
-        hills: [{
-            title: 'Buck Hill',
-            description: '',
-        }],
-
     };
-
-    componentDidMount() {
-        this.props.dispatch({ type: 'FETCH_HILLS' })
-    }
-
-    state = { expanded: false };
-
 
     handleExpandClick = () => {
         this.setState(state => ({ expanded: !state.expanded }));
@@ -91,62 +81,72 @@ class HillItem extends Component {
 
     render() {
 
+        console.log(this.props.reduxStore)
         const { classes } = this.props;
 
-        let id= this.props.id
-        // let index = id -1
-        let hill = this.props.reduxStore.hill
+        // let id= this.props.id
+        // let index = id
+        // let hill = this.props.reduxStore.hills[index]
 
         return (
-            <Card className={classes.card} >
-                    <CardHeader
-                        avatar={
-                            <Avatar aria-label="Buck Hill" className={classes.avatar}>
-                                BH
-                            </Avatar>
-                        }
-                        title={this.props.name}
-                    />
-                    <CardMedia
-                        className={classes.media}
-                    />
-                    <CardActions className={classes.actions} disableActionSpacing>
-                        <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
-                            <Chip
-                                //   avatar={<Avatar>MB</Avatar>}
-                                label="More Info"
-                                onClick={this.handleClick}
-                                className={classes.chip}
-                                color="primary"
-                            />
-                        </IconButton>
-                        <IconButton
-                            className={classnames(classes.expand, {
-                                [classes.expandOpen]: this.state.expanded,
-                            })}
-                            onClick={this.handleExpandClick}
-                            aria-expanded={this.state.expanded}
-                            aria-label="Show more"
-                        >
-                            <ExpandMoreIcon />
-                        </IconButton>
-                    </CardActions>
-                    <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                        <CardContent>
-                            {/* <Typography paragraph>Method:</Typography> */}
-                            <Typography paragraph>
-                                {/* pull info from DB */}
-                            </Typography>
-                            <Typography paragraph>
-                                {/* pull location from DB */}
-                            </Typography>
-                            <Typography paragraph>
-                                {/* pull night from DB */}
-                            </Typography>
-                        </CardContent>
-                    </Collapse>
-                </Card>
-    
+            
+            <Router>
+                {/* <h3>khkhkh</h3> */}
+                <Card className={classes.card} >
+                        <CardHeader
+                            avatar={
+                                <Avatar aria-label="Buck Hill" className={classes.avatar}>
+                                    BH
+                                </Avatar>
+                            }
+                            title={this.props.title}
+                        />
+                        <CardMedia
+                            className={classes.media}
+                            logo={this.props.logo}
+                        />
+                        <CardActions className={classes.actions} disableActionSpacing>
+                            <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
+                                <Chip
+                                    //   avatar={<Avatar>MB</Avatar>}
+                                    label="More Info"
+                                    onClick={this.handleClick}
+                                    className={classes.chip}
+                                    color="primary"
+                                />
+                            </IconButton>
+                            <IconButton
+                                className={classnames(classes.expand, {
+                                    [classes.expandOpen]: this.state.expanded,
+                                })}
+                                onClick={this.handleExpandClick}
+                                aria-expanded={this.state.expanded}
+                                aria-label="Show more"
+                            >
+                                <ExpandMoreIcon />
+                            </IconButton>
+                        </CardActions>
+                        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                            <CardContent>
+                                <Typography paragraph>
+                                    About:
+                                    <br/>
+                                    {this.props.about}
+                                </Typography>
+                                <Typography paragraph>
+                                    Terrain:
+                                    <br/>
+                                    {this.props.terrain}
+                                </Typography>
+                                <Typography paragraph>
+                                    Snow Making Equipment:
+                                    <br/>
+                                    {this.props.equip}
+                                </Typography>
+                            </CardContent>
+                        </Collapse>
+                    </Card>
+                </Router>
         )
     }
 }
@@ -160,4 +160,4 @@ HillItem.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(HillItem));
+export default withRouter(connect(mapStateToProps) (withStyles(styles)(HillItem)));

@@ -1,61 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import HillItem from '../HillItem/HillItem'
-
-// MUI imports
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classnames from 'classnames';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import red from '@material-ui/core/colors/red';
-import HomeIcon from '@material-ui/icons/Home';
-import Icon from '@material-ui/core/Icon';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Chip from '@material-ui/core/Chip';
-import { blue } from '@material-ui/core/colors';
-import InfoIcon from '@material-ui/icons/Info';
-
-
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import HillItem from '../HillItem/HillItem';
 
 class LocalHills extends Component {
 
-
-    // fix state so only one card expands and not all the cards... 
-
-    handleClick = () => {
-        console.log('handleClick')
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_HILLS' })
     }
 
     render() {
 
-        // let id= this.props.id
-        // // let index = id -1
-        // let hill = this.props.reduxStore.hill
-
-        
-
         return (
-            <div style={{ display: 'flex' } }>
-                {this.props.reduxStore.hill.map(hill => {
-                    return (
-                        <HillItem id={hill.id} key={hill.id} hill={hill}/>
-                    )
-                })
-                }
-    
-                
-            </div>
-        )
-
+            <Router>
+                <div style={{ display: 'flex' } }>
+                    {this.props.reduxStore.hill.map(hill => {
+                        return (
+                            <HillItem 
+                                id={hill.id} 
+                                title={hill.name}
+                                open={hill.open}
+                                equip={hill.snow_equip}
+                                night={hill.night}
+                                rental={hill.rental}
+                                hours={hill.hours}
+                                terrain={hill.terrain}
+                                slopes={hill.slopes}
+                                live={hill.live_view}
+                                about={hill.about}
+                                logo={hill.logo}
+                            />
+                        )
+                    })
+                    }
+                </div>
+            </Router>
+        );
+    }
+}
 
         // <Card className={classes.card} >
         //             <CardHeader
@@ -165,15 +147,10 @@ class LocalHills extends Component {
             // </Card>
             // </div>
         
-    }
-}
+
 
 const mapStateToProps = (reduxStore) => ({
     reduxStore
 });
-
-LocalHills.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
 export default connect(mapStateToProps)(LocalHills);

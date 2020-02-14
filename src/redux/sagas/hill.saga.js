@@ -8,9 +8,9 @@ function* watcherSaga() {
 function* getHills() {
     try {
         let response = yield axios.get('/hill')
-        console.log(response)
-        yield put({ type: 'SET_HILLS', payload: response })
-
+        console.log(response.data)
+        yield put({ type: 'SET_HILLS', payload: response.data })
+        
     }
     catch (error) {
         console.log('Error getting hills', error)

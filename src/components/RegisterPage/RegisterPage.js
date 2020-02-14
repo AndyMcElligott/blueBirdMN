@@ -92,23 +92,29 @@ class RegisterPage extends Component {
         <form onSubmit={this.registerUser} 
         className={classes.container} noValidate autoComplete="off">
           <h1>Register User</h1>
-          <div className={classes.container}>
+          <br/>
+          <div >
             {/* <label htmlFor="username"> */}
-              Email:
+              {/* Email: */}
               <TextField
                 type="text"
                 name= "username"
-                placeholder="    Email@email.com"
-                // className={classes.input}
+                className={classes.input}
                 className={classes.textField}
+                label= "Email"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
                 margin="normal"
                 variant="outlined"
+                style={{ margin: 8 }}
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
             {/* </label> */}
           </div>
-          {/* <div>
+          <div>
             <label htmlFor="password">
               Password:
               <Input
@@ -169,14 +175,14 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
-            put the input and btn in own div and apply styling; change register input into a btn?
+            {/* put the input and btn in own div and apply styling; change register input into a btn? */}
             <Input
               className="register"
               type="submit"
               name="submit"
               value="Register"
             />
-          </div> */}
+          </div>
         </form>
         <center>
           <Button
