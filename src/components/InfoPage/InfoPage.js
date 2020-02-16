@@ -20,10 +20,18 @@ class InfoPage extends Component {
   // tab state
   state = {
     value: 0,
+    newHill: {
+      live_view: '',
+      youtube_id: '',
+    }
   };
 
   handleChange = (event, value) => {
     this.setState({ value });
+  };
+
+  handleClick = (event, newHill) => {
+    this.setState({newHill})
   };
 
   render() {
@@ -31,19 +39,25 @@ class InfoPage extends Component {
     const { classes } = this.props;
 
     return (
-      <Paper className={classes.root}>
-        <Tabs
-          value={this.state.value}
-          onChange={this.handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          centered
-        >
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-          <Tab label="Item Three" />
-        </Tabs>
-      </Paper>
+      <>
+        <Paper className={classes.root}>
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            <Tab label="Live View" />
+            <Tab label="User Testimony" />
+          </Tabs>
+        </Paper>
+        <form onSubmit= {this.handleClick}>
+          <label> youTube URL </label>
+                  <input value ={this.state.newHill.youtube_id} onChange = {(event) => this.handleChangeFor('youtube_id', event)} />
+                  <input type= "submit" onClick = {this.handleClick}/>
+        </form>
+      </>
     );
   }
 }
