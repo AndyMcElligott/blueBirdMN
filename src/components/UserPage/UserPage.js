@@ -7,14 +7,32 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
 const UserPage = (props) => (
-  <div>
-    <h1 id="welcome">
-      Welcome, { props.user.username }!
-    </h1>
-    {/* <p>Your ID is: {props.user.id}</p> */}
-    <LogOutButton className="log-in" />
+  <>
+    <div>
+      <h1 id="welcome">
+        Welcome, { props.user.username }!
+      </h1>
+      {/* <p>Your ID is: {props.user.id}</p> */}
+    </div>
+    <div className="userInfo">
+    <label>
+      You are this type of rider: {props.user.rider}
+    </label>
+    <br/>
+    <label>
+      This is the type of terrain you like to ride: {props.user.terrain}
+    </label>
+    <br/>
+    <label>
+      This is how many years of experience you have on the snow: {props.user.experience}
+    </label>
+    <br/>
+    <label>
+      This is the city you currently reside in: {props.user.city}
+    </label>
   </div>
-  
+  <LogOutButton className="log-in" />
+</>
 );
 
 // Instead of taking everything from state, we just want the user info.
