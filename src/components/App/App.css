@@ -1,6 +1,8 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0px;
+    background-image: url(https://media.giphy.com/media/FoVi0LDjy1XS8/source.gif);
+    background-size: 45em;
 }
 
 .hillcard {
@@ -12,13 +14,14 @@ body {
     margin: 50px;
 }
 
-/* form {
-    display: 'grid'; 
+form {
+    display: inline-block; 
     height: 250px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
-} */
+    box-sizing: border-box;
+}
 
 input {
     margin: 5px;

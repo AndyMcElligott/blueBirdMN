@@ -1,6 +1,6 @@
-const hillReducer = (state = {}, action) => {
+const hillReducer = (state = [], action) => {
     switch (action.type) {
-        case 'GET_HILLS':
+        case 'SET_HILLS':
             return action.payload;
         default:
             return state;    

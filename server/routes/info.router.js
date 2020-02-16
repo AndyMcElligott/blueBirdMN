@@ -7,20 +7,16 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM "hill";'
-    console.log('in hills router.get', req.body)
+    const queryText = 'SELECT * FROM "video";'
+    console.log('in info router.get', req.body)
     pool.query(queryText)
     .then( result => {
       console.log(result.rows)
         res.send(result.rows)
     }).catch( error => {
-        console.log('error in hills GET', error)
+        console.log('error in info GET', error)
         res.sendStatus(500);
     })
   })
-
-
-
-
 
   module.exports = router;
