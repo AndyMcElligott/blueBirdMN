@@ -16,7 +16,7 @@ function* fetchYouTube() {
     try {
         let response = yield axios.get(`/info`)
         console.log(response.data)
-        yield.put({type: 'SET_YOUTUBE', payload: response.data})
+        yield put({type: 'SET_YOUTUBE', payload: response.data})
     }
     catch(error) {
         console.log('error getting youtube', error)

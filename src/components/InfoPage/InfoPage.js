@@ -53,6 +53,14 @@ class InfoPage extends Component {
     })
   }
 
+  liveView = () => {
+    // this.props.dispatch({
+    //     type: 'GET_INFO',
+    //     payload: id
+    // })
+    this.props.history.push(`/liveView`)
+}
+
   render() {
 
     const { classes } = this.props;
@@ -66,6 +74,7 @@ class InfoPage extends Component {
             indicatorColor="primary"
             textColor="primary"
             centered
+            onClick = {()=>{this.liveView()}}
           >
             <Tab label="Live View" />
             <Tab label="User Testimony" />
