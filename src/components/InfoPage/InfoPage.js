@@ -20,6 +20,7 @@ class InfoPage extends Component {
   // tab state
   state = {
     value: 0,
+    // newHill state
     newHill: {
       live_view: '',
       youtube_id: '',
@@ -30,9 +31,23 @@ class InfoPage extends Component {
     this.setState({ value });
   };
 
-  handleClick = (event, newHill) => {
-    this.setState({newHill})
+  handleChangeFor = (event, propertyName) => {
+    console.log(event.target.value)
+    this.setState({
+      newHill: {
+        ...this.state.newHill,
+        [propertyName]: event.target.value
+      }
+    })
   };
+
+  handleClick = (event) => {
+    event.preventDefault()
+    this.props.dispatch({
+      type: 'POST_YOUTUBE',
+      payload: this.state.newHill
+    })
+  }
 
   render() {
 
