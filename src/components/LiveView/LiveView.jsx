@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import YouTube from 'react-youtube';
-import HillItem from '../HillItem/HillItem';
 
 class LiveView extends Component {
 
@@ -24,7 +23,7 @@ class LiveView extends Component {
         return(
         
             <YouTube
-                videoId={hill.live_view}
+                // live_view={live_view}
                 opts={opts}
                 onReady={this.videoOnReady}
                 onPlay={this.videoOnPlay}
