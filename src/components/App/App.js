@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LocalHills from '../LocalHills/LocalHills';
 import AddHill from '../AddHill/AddHill';
 
+
 import './App.css';
 
 class App extends Component {
@@ -62,6 +63,12 @@ class App extends Component {
               exact
               path="/AddHill"
               component={AddHill}
+            />
+            {/* More details about the Hill user clicked on */}
+            <ProtectedRoute
+              exact
+              path="/InfoPage"
+              component={InfoPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

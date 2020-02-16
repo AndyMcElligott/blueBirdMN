@@ -19,10 +19,6 @@ class LocalHills extends Component {
                             <HillItem 
                                 id={hill.id} 
                                 title={hill.name}
-                                open={hill.open}
-                                equip={hill.snow_equip}
-                                night={hill.night}
-                                rental={hill.rental}
                                 hours={hill.hours}
                                 terrain={hill.terrain}
                                 slopes={hill.slopes}

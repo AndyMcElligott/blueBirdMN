@@ -79,12 +79,20 @@ class HillItem extends Component {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
+    info = (id) => {
+        this.props.dispatch({
+            type: 'GET_INFO',
+            payload: id
+        })
+        this.props.history.push(`/info`)
+    }
+
     render() {
 
         console.log(this.props.reduxStore)
         const { classes } = this.props;
 
-        // let id= this.props.id
+        let id= this.props.id
         // let index = id
         // let hill = this.props.reduxStore.hills[index]
 
@@ -101,16 +109,122 @@ class HillItem extends Component {
                             }
                             title={this.props.title}
                         />
-                        <CardMedia
-                            className={classes.media}
-                            logo={this.props.logo}
-                        />
+                        <CardMedia >
+                            {/* className={classes.media} */}
+                            {this.props.logo}
+                        </CardMedia>
                         <CardActions className={classes.actions} disableActionSpacing>
                             <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
                                 <Chip
                                     //   avatar={<Avatar>MB</Avatar>}
                                     label="More Info"
-                                    onClick={this.handleClick}
+                                    onClick = {()=>{this.info(id)}}
+                                    className={classes.chip}
+                                    color="primary"
+                                />
+                            </IconButton>
+                            <IconButton
+                                className={classnames(classes.expand, {
+                                    [classes.expandOpen]: this.state.expanded,
+                                })}
+                                onClick={this.handleExpandClick}
+                                aria-expanded={this.state.expanded}
+                                aria-label="Show more"
+                            >
+                                <ExpandMoreIcon />
+                            </IconButton>
+                        </CardActions>
+                        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                            <CardContent>
+                                <Typography paragraph>
+                                    About:
+                                    <br/>
+                                    {this.props.about}
+                                </Typography>
+                                <Typography paragraph>
+                                    Terrain:
+                                    <br/>
+                                    {this.props.terrain}
+                                </Typography>
+                                <Typography paragraph>
+                                    
+                                </Typography>
+                            </CardContent>
+                        </Collapse>
+                    </Card>
+
+                    <Card className={classes.card} >
+                        <CardHeader
+                            avatar={
+                                <Avatar aria-label="Afton Alps" className={classes.avatar}>
+                                    AA
+                                </Avatar>
+                            }
+                            title={this.props.title}
+                        />
+                        <CardMedia >
+                            {/* className={classes.media} */}
+                            {this.props.logo}
+                        </CardMedia>
+                        <CardActions className={classes.actions} disableActionSpacing>
+                            <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
+                                <Chip
+                                    //   avatar={<Avatar>MB</Avatar>}
+                                    label="More Info"
+                                    onClick = {()=>{this.info(id)}}
+                                    className={classes.chip}
+                                    color="primary"
+                                />
+                            </IconButton>
+                            <IconButton
+                                className={classnames(classes.expand, {
+                                    [classes.expandOpen]: this.state.expanded,
+                                })}
+                                onClick={this.handleExpandClick}
+                                aria-expanded={this.state.expanded}
+                                aria-label="Show more"
+                            >
+                                <ExpandMoreIcon />
+                            </IconButton>
+                        </CardActions>
+                        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                            <CardContent>
+                                <Typography paragraph>
+                                    About:
+                                    <br/>
+                                    {this.props.about}
+                                </Typography>
+                                <Typography paragraph>
+                                    Terrain:
+                                    <br/>
+                                    {this.props.terrain}
+                                </Typography>
+                                <Typography paragraph>
+                                    
+                                </Typography>
+                            </CardContent>
+                        </Collapse>
+                    </Card>
+                    
+                    {/* <Card className={classes.card} >
+                        <CardHeader
+                            avatar={
+                                <Avatar aria-label="Buck Hill" className={classes.avatar}>
+                                    HH
+                                </Avatar>
+                            }
+                            title={this.props.title}
+                        />
+                        <CardMedia >
+                            {/* className={classes.media} */}
+                            {/* {this.props.logo}
+                        </CardMedia>
+                        <CardActions className={classes.actions} disableActionSpacing>
+                            <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
+                                <Chip
+                                    //   avatar={<Avatar>MB</Avatar>}
+                                    label="More Info"
+                                    onClick = {()=>{this.info(id)}}
                                     className={classes.chip}
                                     color="primary"
                                 />
@@ -144,8 +258,8 @@ class HillItem extends Component {
                                     {this.props.equip}
                                 </Typography>
                             </CardContent>
-                        </Collapse>
-                    </Card>
+                        </Collapse> */}
+                    {/* </Card>  */}
                 </Router>
         )
     }
