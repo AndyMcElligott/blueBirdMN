@@ -2,6 +2,7 @@ import axios from 'axios'
 import { put, takeEvery, } from 'redux-saga/effects';
 
 function* infoSaga() {
+    yield takeEvery('FETCH_YOUTUBE', fetchYouTube)
     yield takeEvery('POST_YOUTUBE', postYoutube);
 }
 

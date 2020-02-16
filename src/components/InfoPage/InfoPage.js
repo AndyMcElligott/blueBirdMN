@@ -17,6 +17,10 @@ const styles = {
 
 class InfoPage extends Component {
 
+  componentDidMount() {
+    this.props.dispatch({type: 'FETCH_YOUTUBE'})
+  }
+
   // tab state
   state = {
     value: 0,
