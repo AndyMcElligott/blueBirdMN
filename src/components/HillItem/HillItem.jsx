@@ -84,7 +84,7 @@ class HillItem extends Component {
             type: 'GET_INFO',
             payload: id
         })
-        this.props.history.push(`/info`)
+        this.props.history.push(`/infopage`)
     }
 
     render() {
