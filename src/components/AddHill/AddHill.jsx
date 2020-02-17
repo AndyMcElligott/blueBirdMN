@@ -30,7 +30,7 @@ class AddHill extends Component {
 
   state = {
       hillName: '',
-      open: '',
+      open_trails: '',
       live_view: '',
       hours: '',
       logo: '',
@@ -45,7 +45,7 @@ class AddHill extends Component {
       type: 'SUBMIT_HILL',
       payload: {
         hillName: this.state.hillName,
-        open: this.state.open,
+        open_trails: this.state.open_trails,
         live_view: this.state.live_view,
         hours: this.state.hours,
         logo: this.state.logo,
@@ -74,7 +74,7 @@ class AddHill extends Component {
             value={this.state.hillName}
             margin="normal"
             variant="filled"
-            onChange={this.handleInputChangeFor('name')}
+            onChange={this.handleInputChangeFor('hillName')}
           />
           <TextField style={{ display: 'inline-block' }}
             id="filled-name"
