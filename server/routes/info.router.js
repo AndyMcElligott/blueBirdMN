@@ -31,4 +31,8 @@ router.post('/', (req, res) => {
     })
 });
 
+router.delete('/:id', (req, res) => {
+  res.sendStatus(200);
+});
+
 module.exports = router;

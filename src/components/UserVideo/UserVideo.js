@@ -11,6 +11,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+
 const styles = {
     root: {
         flexGrow: 1,
@@ -111,10 +112,8 @@ class UserVideo extends Component {
                     onStateChange={this.videoStateChange}
                 />
                 <DeleteIcon className={classes.icon}
-                    onClick={this.handleDelete} />
-                {/* <div className="deleteVid">
-                🗑️ onClick = {this.handleClick}
-            </div>  */}
+                    onClick={this.handleDelete} fontSize="large"/>
+                {/* <AddIcon /> */}
             </>
         );
     }
