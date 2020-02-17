@@ -55,13 +55,13 @@ class LiveView extends Component {
         this.props.history.push(`/infopage`)
     }
     
-      handleClick = (event) => {
-        event.preventDefault()
-        this.props.dispatch({
-          type: 'POST_YOUTUBE',
-          payload: this.state.newHill
-        })
-      }
+    //   handleClick = (event) => {
+    //     event.preventDefault()
+    //     this.props.dispatch({
+    //       type: 'POST_YOUTUBE',
+    //       payload: this.state.newHill
+    //     })
+    //   }
     
       liveView = () => {
         this.props.history.push(`/liveView`)
@@ -101,11 +101,6 @@ class LiveView extends Component {
                     onClick = {()=>{this.userVideo()}} />
                 </Tabs>
             </Paper>
-                <form onSubmit= {this.handleClick} className = "youtubePlayer">
-                    <label> youTube URL </label>
-                    <input value ={this.state.newHill.youtube_id} onChange = {(event) => this.handleChangeFor('youtube_id', event)} />
-                    <input type= "submit" onClick = {this.handleClick}/>
-                </form> 
             <YouTube
                 // live_view={live_view}
                 opts={opts}

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import HillItem from '../HillItem/HillItem';
 
+
 class LocalHills extends Component {
 
     componentDidMount() {

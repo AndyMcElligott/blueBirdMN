@@ -9,63 +9,61 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles = {
     root: {
-      flexGrow: 1,
+        flexGrow: 1,
     },
-  };
+};
 
 class UserVideo extends Component {
 
     componentDidMount() {
-        this.props.dispatch({type: 'FETCH_YOUTUBE'})
-      }
-      
-      // tab state
-      state = {
+        this.props.dispatch({ type: 'FETCH_YOUTUBE' })
+    }
+
+    // tab state
+    state = {
         value: 0,
-        playerObj : '',
-        // newHill state
-        
-        //   live_view: '',
+        playerObj: '',
         youtube_id: '',
-        
-      };
-    
-      handleChange = (event, value) => {
+    };
+
+    handleChange = (event, value) => {
         this.setState({ value });
-      };
-    
-      handleChangeFor = (event) => {
+    };
+
+    handleChangeFor = (event) => {
         console.log(event.target.value)
         this.setState({
-          youtube_id: event.target.value
-          
-        })
-      };
+            youtube_id: event.target.value
 
-      info = (id) => {
-        this.props.dispatch({
-            type: 'GET_INFO',
-            payload: id
         })
-        this.props.history.push(`/infopage`)
+    };
+
+    handleDelete = () => {
+        console.log('deleting this video')
     }
-    
-      handleClick = (event) => {
+
+    //// NEED GET ROUTE TO GET USER VIDS
+    //   info = (id) => {
+    //     this.props.dispatch({
+    //         type: 'GET_INFO',
+    //         payload: id
+    //     })
+    //     this.props.history.push(`/infopage`)
+    // }
+
+    handleClick = (event) => {
         event.preventDefault()
         this.props.dispatch({
-          type: 'POST_YOUTUBE',
-          payload: this.state.newHill
+            type: 'POST_YOUTUBE',
+            payload: this.state.newHill
         })
-      }
-    
-      liveView = () => {
-        // this.props.dispatch({
-        //     type: 'GET_INFO',
-        //     payload: id
-        // })
+    }
+
+    liveView = () => {
         this.props.history.push(`/liveView`)
     }
 
@@ -81,38 +79,42 @@ class UserVideo extends Component {
 
         const { classes } = this.props;
 
-        return(
+        return (
             <>
 
-            <Paper className={classes.root}>
-                <Tabs
-                value={this.state.value}
-                onChange={this.handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                centered
-                // onClick = {()=>{this.liveView()}}
-                >
-                <Tab label="Hill Info"
-                    onClick = {()=>{this.info()}} />
-                <Tab label="Live View" 
-                    onClick = {()=>{this.liveView()}} />
-                <Tab label="User Testimony" />
-                </Tabs>
-            </Paper>
-                <form onSubmit= {this.handleClick} className = "youtubePlayer">
+                <Paper className={classes.root}>
+                    <Tabs
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        centered
+                    // onClick = {()=>{this.liveView()}}
+                    >
+                        <Tab label="Hill Info"
+                            onClick={() => { this.info() }} />
+                        <Tab label="Live View"
+                            onClick={() => { this.liveView() }} />
+                        <Tab label="User Testimony" />
+                    </Tabs>
+                </Paper>
+                <form onSubmit={this.handleClick} className="youtubePlayer">
                     <label> youTube URL </label>
-                    <input value ={this.state.youtube_id} onChange = {this.handleChangeFor} />
-                    <input type= "submit" onClick = {this.handleClick}/>
-                </form> 
-            <YouTube
-                // live_view={live_view}
-                opts={opts}
-                onReady={this.videoOnReady}
-                onPlay={this.videoOnPlay}
-                onStateChange={this.videoStateChange}
-            />
-                
+                    <input value={this.state.youtube_id} onChange={this.handleChangeFor} />
+                    <input type="submit" onClick={this.handleClick} />
+                </form>
+                <YouTube
+                    // live_view={live_view}
+                    opts={opts}
+                    onReady={this.videoOnReady}
+                    onPlay={this.videoOnPlay}
+                    onStateChange={this.videoStateChange}
+                />
+                <DeleteIcon className={classes.icon}
+                    onClick={this.handleDelete} />
+                {/* <div className="deleteVid">
+                🗑️ onClick = {this.handleClick}
+            </div>  */}
             </>
         );
     }
@@ -122,10 +124,10 @@ class UserVideo extends Component {
 
 const mapStateToProps = (reduxStore) => ({
     reduxStore
-  });
-  
-  UserVideo.propTypes = {
+});
+
+UserVideo.propTypes = {
     classes: PropTypes.object.isRequired,
-  };
-  
-  export default withRouter(connect(mapStateToProps) (withStyles(styles)(UserVideo)));
+};
+
+export default withRouter(connect(mapStateToProps)(withStyles(styles)(UserVideo)));

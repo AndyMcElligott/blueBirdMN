@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import HillItem from '../HillItem/HillItem';
+import LocalHills from '../LocalHills/LocalHills';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -36,29 +37,25 @@ class InfoPage extends Component {
     this.setState({ value });
   };
 
-  handleChangeFor = (event, propertyName) => {
-    console.log(event.target.value)
-    this.setState({
-      newHill: {
-        ...this.state.newHill,
-        [propertyName]: event.target.value
-      }
-    })
-  };
+  // handleChangeFor = (event, propertyName) => {
+  //   console.log(event.target.value)
+  //   this.setState({
+  //     newHill: {
+  //       ...this.state.newHill,
+  //       [propertyName]: event.target.value
+  //     }
+  //   })
+  // };
 
-  handleClick = (event) => {
-    event.preventDefault()
-    this.props.dispatch({
-      type: 'POST_YOUTUBE',
-      payload: this.state.newHill
-    })
-  }
+  // handleClick = (event) => {
+  //   event.preventDefault()
+  //   this.props.dispatch({
+  //     type: 'POST_YOUTUBE',
+  //     payload: this.state.newHill
+  //   })
+  // }
 
   liveView = () => {
-    // this.props.dispatch({
-    //     type: 'GET_INFO',
-    //     payload: id
-    // })
     this.props.history.push(`/liveView`)
 }
 
@@ -106,7 +103,7 @@ userVideo = () => {
                     }
                 </div> */}
                 <div className="currentHillInfo">
-                  <p>Hill: {this.props.title} </p>
+                  <p>Hill: {this.props.name} </p>
                   <p>Trails Open: {this.props.slopes}</p>
                   <p>Hours of Operation: </p>
                   <p>About:</p>

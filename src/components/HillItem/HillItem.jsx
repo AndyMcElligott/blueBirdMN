@@ -104,7 +104,7 @@ class HillItem extends Component {
                         <CardHeader
                             avatar={
                                 <Avatar aria-label="Buck Hill" className={classes.avatar}>
-                                    {this.props.hill.name}
+                                    {this.props.hill.avatar}
                                 </Avatar>
                             }
                             title={this.props.hill.name}
@@ -141,7 +141,7 @@ class HillItem extends Component {
                                 <Typography paragraph>
                                     About:
                                     <br/>
-                                    {this.props.about}
+                                    {this.props.hill.about}
                                 </Typography>
                                 {/* <Typography paragraph>
                                     Terrain:
