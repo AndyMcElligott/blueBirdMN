@@ -76,10 +76,12 @@ class InfoPage extends Component {
             centered
             onClick = {()=>{this.liveView()}}
           >
+            <Tab label="Hill Info" />
             <Tab label="Live View" />
             <Tab label="User Testimony" />
           </Tabs>
         </Paper>
+        {/* move below to UserVideo component once made */}
         <form onSubmit= {this.handleClick}>
           <label> youTube URL </label>
                   <input value ={this.state.newHill.youtube_id} onChange = {(event) => this.handleChangeFor('youtube_id', event)} />
