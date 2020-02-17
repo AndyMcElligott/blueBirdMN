@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import {Button} from '@material-ui/core'
+import { Button } from '@material-ui/core';
 
 const styles = theme => ({
   container: {
@@ -24,22 +24,41 @@ const styles = theme => ({
   },
 });
 
-//   handleChange = name => event => {
-//     this.setState({
-//       [name]: event.target.value,
-//     });
-//   };
+
 
 class AddHill extends Component {
 
   state = {
-    hillName: '',
-    open: '',
-    night: '',
-    rental: '',
-    hours: '',
-    equipment: '',
-    info: '',
+      hillName: '',
+      open: '',
+      live_view: '',
+      hours: '',
+      logo: '',
+      about: '',
+      avatar: '',
+  }
+
+  submitHill = (event) => {
+    console.log('submit hill clicked, sending to DB');
+    event.preventDefault();
+    this.props.dispatch({
+      type: 'SUBMIT_HILL',
+      payload: {
+        hillName: this.state.hillName,
+        open: this.state.open,
+        live_view: this.state.live_view,
+        hours: this.state.hours,
+        logo: this.state.logo,
+        about: this.state.about,
+        avatar: this.state.avatar,
+      },
+    });
+  };
+  
+  handleInputChangeFor = propertyName => (event) => {
+    this.setState({
+      [propertyName]: event.target.value,
+    });
   }
 
   render() {
@@ -53,7 +72,16 @@ class AddHill extends Component {
             label="Hill Name"
             className={classes.textField}
             value={this.state.hillName}
-            //   onChange={this.handleChange('name')}
+            margin="normal"
+            variant="filled"
+            onChange={this.handleInputChangeFor('name')}
+          />
+          <TextField style={{ display: 'inline-block' }}
+            id="filled-name"
+            label="Two Letters"
+            className={classes.textField}
+            value={this.state.avatar}
+            onChange={this.handleInputChangeFor('avatar')}
             margin="normal"
             variant="filled"
           />
@@ -63,25 +91,16 @@ class AddHill extends Component {
             label="Open"
             className={classes.textField}
             value={this.state.open}
-            //   onChange={this.handleChange('name')}
+            onChange={this.handleInputChangeFor('open_trails')}
             margin="normal"
             variant="filled"
           />
           <TextField
             id="filled-name"
-            label="Night Skiing"
+            label="Live View URL"
             className={classes.textField}
-            value={this.state.night}
-            //   onChange={this.handleChange('name')}
-            margin="normal"
-            variant="filled"
-          />
-          <TextField
-            id="filled-name"
-            label="Rental"
-            className={classes.textField}
-            value={this.state.rental}
-            //   onChange={this.handleChange('name')}
+            value={this.state.live_view}
+            onChange={this.handleInputChangeFor('live_view')}
             margin="normal"
             variant="filled"
           />
@@ -90,16 +109,16 @@ class AddHill extends Component {
             label="Hours"
             className={classes.textField}
             value={this.state.hours}
-            //   onChange={this.handleChange('name')}
+            onChange={this.handleInputChangeFor('hours')}
             margin="normal"
             variant="filled"
           />
           <TextField
             id="filled-name"
-            label="Equipment"
+            label="Logo URL"
             className={classes.textField}
-            value={this.state.equipment}
-            //   onChange={this.handleChange('name')}
+            value={this.state.logo}
+            onChange={this.handleInputChangeFor('logo')}
             margin="normal"
             variant="filled"
           />
@@ -108,14 +127,14 @@ class AddHill extends Component {
             label="Hill Info"
             className={classes.textField}
             value={this.state.info}
-            //   onChange={this.handleChange('name')}
+            onChange={this.handleInputChangeFor('about')}
             margin="normal"
             variant="filled"
           />
-          <Button className="AddHillBtn" type= "submit" variant="contained" color="primary"> Submit
+          <Button className="AddHillBtn" type="submit" variant="contained" color="primary" onClick={this.submitHill}> Submit
           </Button>
         </form>
-        
+
       </>
     )
   }
