@@ -98,20 +98,22 @@ class HillItem extends Component {
 
         return (
             
-            <Router>
+            <>
                 {/* <h3>khkhkh</h3> */}
                 <Card className={classes.card} >
                         <CardHeader
                             avatar={
                                 <Avatar aria-label="Buck Hill" className={classes.avatar}>
-                                    BH
+                                    {this.props.hill.name}
                                 </Avatar>
                             }
-                            title={this.props.title}
+                            title={this.props.hill.name}
                         />
-                        <CardMedia >
-                            {/* className={classes.media} */}
-                            {this.props.logo}
+                        <CardMedia
+                            style={{height: 1, paddingTop: '56.25%'}} 
+                            image={this.props.hill.logo}
+                            >
+                            
                         </CardMedia>
                         <CardActions className={classes.actions} disableActionSpacing>
                             <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
@@ -124,9 +126,9 @@ class HillItem extends Component {
                                 />
                             </IconButton>
                             <IconButton
-                                className={classnames(classes.expand, {
-                                    [classes.expandOpen]: this.state.expanded,
-                                })}
+                                // className={classnames(classes.expand, {
+                                //     [classes.expandOpen]: this.state.expanded,
+                                // })}
                                 onClick={this.handleExpandClick}
                                 aria-expanded={this.state.expanded}
                                 aria-label="Show more"
@@ -141,126 +143,18 @@ class HillItem extends Component {
                                     <br/>
                                     {this.props.about}
                                 </Typography>
-                                <Typography paragraph>
+                                {/* <Typography paragraph>
                                     Terrain:
                                     <br/>
                                     {this.props.terrain}
                                 </Typography>
                                 <Typography paragraph>
                                     
-                                </Typography>
+                                </Typography> */}
                             </CardContent>
                         </Collapse>
                     </Card>
-
-                    <Card className={classes.card} >
-                        <CardHeader
-                            avatar={
-                                <Avatar aria-label="Afton Alps" className={classes.avatar}>
-                                    AA
-                                </Avatar>
-                            }
-                            title={this.props.title}
-                        />
-                        <CardMedia >
-                            {/* className={classes.media} */}
-                            {this.props.logo}
-                        </CardMedia>
-                        <CardActions className={classes.actions} disableActionSpacing>
-                            <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
-                                <Chip
-                                    //   avatar={<Avatar>MB</Avatar>}
-                                    label="More Info"
-                                    onClick = {()=>{this.info(id)}}
-                                    className={classes.chip}
-                                    color="primary"
-                                />
-                            </IconButton>
-                            <IconButton
-                                className={classnames(classes.expand, {
-                                    [classes.expandOpen]: this.state.expanded,
-                                })}
-                                onClick={this.handleExpandClick}
-                                aria-expanded={this.state.expanded}
-                                aria-label="Show more"
-                            >
-                                <ExpandMoreIcon />
-                            </IconButton>
-                        </CardActions>
-                        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                            <CardContent>
-                                <Typography paragraph>
-                                    About:
-                                    <br/>
-                                    {this.props.about}
-                                </Typography>
-                                <Typography paragraph>
-                                    Terrain:
-                                    <br/>
-                                    {this.props.terrain}
-                                </Typography>
-                                <Typography paragraph>
-                                    
-                                </Typography>
-                            </CardContent>
-                        </Collapse>
-                    </Card>
-                    
-                    {/* <Card className={classes.card} >
-                        <CardHeader
-                            avatar={
-                                <Avatar aria-label="Buck Hill" className={classes.avatar}>
-                                    HH
-                                </Avatar>
-                            }
-                            title={this.props.title}
-                        />
-                        <CardMedia >
-                            {/* className={classes.media} */}
-                            {/* {this.props.logo}
-                        </CardMedia>
-                        <CardActions className={classes.actions} disableActionSpacing>
-                            <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
-                                <Chip
-                                    //   avatar={<Avatar>MB</Avatar>}
-                                    label="More Info"
-                                    onClick = {()=>{this.info(id)}}
-                                    className={classes.chip}
-                                    color="primary"
-                                />
-                            </IconButton>
-                            <IconButton
-                                className={classnames(classes.expand, {
-                                    [classes.expandOpen]: this.state.expanded,
-                                })}
-                                onClick={this.handleExpandClick}
-                                aria-expanded={this.state.expanded}
-                                aria-label="Show more"
-                            >
-                                <ExpandMoreIcon />
-                            </IconButton>
-                        </CardActions>
-                        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                            <CardContent>
-                                <Typography paragraph>
-                                    About:
-                                    <br/>
-                                    {this.props.about}
-                                </Typography>
-                                <Typography paragraph>
-                                    Terrain:
-                                    <br/>
-                                    {this.props.terrain}
-                                </Typography>
-                                <Typography paragraph>
-                                    Snow Making Equipment:
-                                    <br/>
-                                    {this.props.equip}
-                                </Typography>
-                            </CardContent>
-                        </Collapse> */}
-                    {/* </Card>  */}
-                </Router>
+                </>
         )
     }
 }

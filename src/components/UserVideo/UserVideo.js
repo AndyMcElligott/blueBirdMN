@@ -27,25 +27,31 @@ class UserVideo extends Component {
         value: 0,
         playerObj : '',
         // newHill state
-        newHill: {
-          live_view: '',
-          youtube_id: '',
-        }
+        
+        //   live_view: '',
+        youtube_id: '',
+        
       };
     
       handleChange = (event, value) => {
         this.setState({ value });
       };
     
-      handleChangeFor = (event, propertyName) => {
+      handleChangeFor = (event) => {
         console.log(event.target.value)
         this.setState({
-          newHill: {
-            ...this.state.newHill,
-            [propertyName]: event.target.value
-          }
+          youtube_id: event.target.value
+          
         })
       };
+
+      info = (id) => {
+        this.props.dispatch({
+            type: 'GET_INFO',
+            payload: id
+        })
+        this.props.history.push(`/infopage`)
+    }
     
       handleClick = (event) => {
         event.preventDefault()
@@ -79,24 +85,24 @@ class UserVideo extends Component {
             <>
 
             <Paper className={classes.root}>
-          <Tabs
-            value={this.state.value}
-            onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-            // onClick = {()=>{this.liveView()}}
-          >
-            <Tab label="Hill Info" />
-            <Tab label="Live View" />
-            //   onClick = {()=>{this.liveView()}} />
-            <Tab label="User Testimony" />
-            //   onClick = {()=>{this.userVideo()}} />
-          </Tabs>
-        </Paper>
+                <Tabs
+                value={this.state.value}
+                onChange={this.handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                centered
+                // onClick = {()=>{this.liveView()}}
+                >
+                <Tab label="Hill Info"
+                    onClick = {()=>{this.info()}} />
+                <Tab label="Live View" 
+                    onClick = {()=>{this.liveView()}} />
+                <Tab label="User Testimony" />
+                </Tabs>
+            </Paper>
                 <form onSubmit= {this.handleClick} className = "youtubePlayer">
                     <label> youTube URL </label>
-                    <input value ={this.state.newHill.youtube_id} onChange = {(event) => this.handleChangeFor('youtube_id', event)} />
+                    <input value ={this.state.youtube_id} onChange = {this.handleChangeFor} />
                     <input type= "submit" onClick = {this.handleClick}/>
                 </form> 
             <YouTube
