@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import HillItem from '../HillItem/HillItem';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -61,6 +62,10 @@ class InfoPage extends Component {
     this.props.history.push(`/liveView`)
 }
 
+userVideo = () => {
+  this.props.history.push(`/userVideo`)
+}
+
   render() {
 
     const { classes } = this.props;
@@ -74,19 +79,40 @@ class InfoPage extends Component {
             indicatorColor="primary"
             textColor="primary"
             centered
-            onClick = {()=>{this.liveView()}}
+            // onClick = {()=>{this.liveView()}}
           >
             <Tab label="Hill Info" />
-            <Tab label="Live View" />
-            <Tab label="User Testimony" />
+            <Tab label="Live View" 
+              onClick = {()=>{this.liveView()}} />
+            <Tab label="User Testimony" 
+              onClick = {()=>{this.userVideo()}} />
           </Tabs>
         </Paper>
+        {/* <div style={{ display: 'flex' } }>
+                    {this.props.reduxStore.hill.map(hill => {
+                        return (
+                            <HillItem 
+                                id={hill.id} 
+                                title={hill.name}
+                                hours={hill.hours}
+                                terrain={hill.terrain}
+                                slopes={hill.slopes}
+                                live={hill.live_view}
+                                about={hill.about}
+                                logo={hill.logo}
+                            />
+                        )
+                    })
+                    }
+                </div> */}
+                <div className="currentHillInfo">
+                  <p>Hill: {this.props.title} </p>
+                  <p>Trails Open: {this.props.slopes}</p>
+                  <p>Hours of Operation: </p>
+                  <p>About:</p>
+                </div>
         {/* move below to UserVideo component once made */}
-        <form onSubmit= {this.handleClick}>
-          <label> youTube URL </label>
-                  <input value ={this.state.newHill.youtube_id} onChange = {(event) => this.handleChangeFor('youtube_id', event)} />
-                  <input type= "submit" onClick = {this.handleClick}/>
-        </form>
+        {/* */}
       </>
     );
   }
