@@ -62,14 +62,6 @@ const styles = theme => ({
     },
 });
 
-// info = (id) => {
-//     this.props.dispatch({
-//         type: 'GET_HILLS',
-//         payload: id
-//     })
-//     this.props.history.push(`/infoPage`)
-// }
-
 class HillItem extends Component {
 
     state = {
@@ -148,7 +140,7 @@ class HillItem extends Component {
                                 onClick={() => this.props.dispatch(
                                     {
                                         type: 'DELETE_HILL',
-                                        //   payload: video
+                                        payload: this.props.hill.id
                                     })} />
                         </CardContent>
                     </Collapse>
