@@ -34,13 +34,13 @@ router.post('/register', (req, res, next) => {
 
 // PUT route to edit user profile; not pw 
 router.put('/:id', (req, res) => {
-  const username = req.body.username;
-  const rider = req.body.rider;
-  const terrain = req.body.terrain;
-  const experience = req.body.experience;
-  const city = req.body.city;
-  console.log(req.body);
-  const queryText = 'UPDATE "user" (username, rider, terrain, experience, city) VALUES ($1, $2, $3, $4, $5) RETURNING id';
+  const username = req.params.username;
+  const rider = req.params.rider;
+  const terrain = req.params.terrain;
+  const experience = req.params.experience;
+  const city = req.params.city;
+  console.log(req.params);
+  const queryText = `UPDATE "user" SET = "rider" = $1, AND "terrain", "experience", "city" = $1, $2, $3, $4, $5 WHERE id = ${id}`;
   pool.query(queryText, [username, rider, terrain, experience, city])
     .then(() => res.sendStatus(200))
     .catch((err) => {
@@ -48,6 +48,7 @@ router.put('/:id', (req, res) => {
       res.sendStatus(500)
     });
 })
+
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route

@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import hillSaga from './hill.saga'
 import infoSaga from './infoSaga';
 import deleteSaga from './deleteSaga';
+import editUserSaga from './editUserSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     hillSaga(),
     infoSaga(),
     deleteSaga(),
+    editUserSaga(),
   ]);
 }
