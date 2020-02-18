@@ -101,7 +101,7 @@ class RegisterPage extends Component {
                 name= "username"
                 className={classes.input}
                 className={classes.textField}
-                label= "Email"
+                label= "User Name"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
                 margin="normal"
@@ -180,7 +180,7 @@ class RegisterPage extends Component {
               className="register"
               type="submit"
               name="submit"
-              value="Register"
+              value="Create User"
             />
           </div>
         </form>
@@ -188,6 +188,7 @@ class RegisterPage extends Component {
           <Button
             type="button"
             className="link-button"
+            variant="contained" color="primary"
             onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
           >
             Login

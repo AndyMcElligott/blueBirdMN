@@ -31,6 +31,25 @@ router.post('/', (req, res) => {
     })
 });
 
+router.delete('/:id/:hill_id', rejectUnauthenticated, (req, res) => {
+  console.log(req.user.id)
+  const id = req.params.id
+  const user_id = req.params.user_id
+  const loggedin_user = req.user.id
+  console.log('in delete route', id)
+  if (loggedin_user == user_id) {
+      const queryText = 'DELETE FROM "video" WHERE "id" = $1'
+      pool.query(queryText, [id])
+      .then(() => {res.sendStatus(200)})
+      .catch((err) => {
+      console.log(err)
+      res.sendStatus(500)
+  })
+  } else {
+      res.sendStatus(403)
+  }
+});
+
 router.delete('/:id', (req, res) => {
   res.sendStatus(200);
 });

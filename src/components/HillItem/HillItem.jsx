@@ -24,6 +24,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Chip from '@material-ui/core/Chip';
 import { blue } from '@material-ui/core/colors';
 import InfoIcon from '@material-ui/icons/Info';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles = theme => ({
     card: {
@@ -92,69 +93,67 @@ class HillItem extends Component {
         console.log(this.props.reduxStore)
         const { classes } = this.props;
 
-        let id= this.props.id
+        let id = this.props.id
         // let index = id
         // let hill = this.props.reduxStore.hills[index]
 
         return (
-            
+
             <>
                 {/* <h3>khkhkh</h3> */}
                 <Card className={classes.card} >
-                        <CardHeader
-                            avatar={
-                                <Avatar aria-label="Buck Hill" className={classes.avatar}>
-                                    {this.props.hill.avatar}
-                                </Avatar>
-                            }
-                            title={this.props.hill.name}
-                        />
-                        <CardMedia
-                            style={{height: 1, paddingTop: '56.25%'}} 
-                            image={this.props.hill.logo}
-                            >
-                            
-                        </CardMedia>
-                        <CardActions className={classes.actions} disableActionSpacing>
-                            <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
-                                <Chip
-                                    //   avatar={<Avatar>MB</Avatar>}
-                                    label="More Info"
-                                    onClick = {()=>{this.info(id)}}
-                                    className={classes.chip}
-                                    color="primary"
-                                />
-                            </IconButton>
-                            <IconButton
-                                // className={classnames(classes.expand, {
-                                //     [classes.expandOpen]: this.state.expanded,
-                                // })}
-                                onClick={this.handleExpandClick}
-                                aria-expanded={this.state.expanded}
-                                aria-label="Show more"
-                            >
-                                <ExpandMoreIcon />
-                            </IconButton>
-                        </CardActions>
-                        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                            <CardContent>
-                                <Typography paragraph>
-                                    About:
-                                    <br/>
-                                    {this.props.hill.about}
-                                </Typography>
-                                {/* <Typography paragraph>
-                                    Terrain:
-                                    <br/>
-                                    {this.props.terrain}
-                                </Typography>
-                                <Typography paragraph>
-                                    
-                                </Typography> */}
-                            </CardContent>
-                        </Collapse>
-                    </Card>
-                </>
+                    <CardHeader
+                        avatar={
+                            <Avatar aria-label="Buck Hill" className={classes.avatar}>
+                                {this.props.hill.avatar}
+                            </Avatar>
+                        }
+                        title={this.props.hill.name}
+                    />
+                    <CardMedia
+                        style={{ height: 1, paddingTop: '56.25%' }}
+                        image={this.props.hill.logo}
+                    >
+
+                    </CardMedia>
+                    <CardActions className={classes.actions} disableActionSpacing>
+                        <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
+                            <Chip
+                                //   avatar={<Avatar>MB</Avatar>}
+                                label="More Info"
+                                onClick={() => { this.info(id) }}
+                                className={classes.chip}
+                                color="primary"
+                            />
+                        </IconButton>
+                        <IconButton
+                            // className={classnames(classes.expand, {
+                            //     [classes.expandOpen]: this.state.expanded,
+                            // })}
+                            onClick={this.handleExpandClick}
+                            aria-expanded={this.state.expanded}
+                            aria-label="Show more"
+                        >
+                            <ExpandMoreIcon />
+                        </IconButton>
+                    </CardActions>
+                    <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                        <CardContent>
+                            <Typography paragraph>
+                                About:
+                                    <br />
+                                {this.props.hill.about}
+                            </Typography>
+                            <DeleteIcon className={classes.icon} fontSize="large"
+                                onClick={() => this.props.dispatch(
+                                    {
+                                        type: 'DELETE_HILL',
+                                        //   payload: video
+                                    })} />
+                        </CardContent>
+                    </Collapse>
+                </Card>
+            </>
         )
     }
 }
@@ -168,4 +167,4 @@ HillItem.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withRouter(connect(mapStateToProps) (withStyles(styles)(HillItem)));
+export default withRouter(connect(mapStateToProps)(withStyles(styles)(HillItem)));

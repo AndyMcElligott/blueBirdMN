@@ -101,13 +101,7 @@ class LiveView extends Component {
                     onClick = {()=>{this.userVideo()}} />
                 </Tabs>
             </Paper>
-            <YouTube
-                // live_view={live_view}
-                opts={opts}
-                onReady={this.videoOnReady}
-                onPlay={this.videoOnPlay}
-                onStateChange={this.videoStateChange}
-            />
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/2WzUGFz03v8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 
             </>
         );

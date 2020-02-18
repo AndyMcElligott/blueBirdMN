@@ -11,7 +11,7 @@ const UserPage = (props) => (
   <>
     <div>
       <h1 id="welcome">
-        Welcome, { props.user.username }!
+        Hello, { props.user.username }!
       </h1>
       {/* <p>Your ID is: {props.user.id}</p> */}
     </div>

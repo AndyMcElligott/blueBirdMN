@@ -15,7 +15,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
-router.post('/register', (req, res, next) => {  
+router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
   const rider = req.body.rider;
@@ -31,6 +31,23 @@ router.post('/register', (req, res, next) => {
       res.sendStatus(500)
     });
 });
+
+// PUT route to edit user profile; not pw 
+router.put('/:id', (req, res) => {
+  const username = req.body.username;
+  const rider = req.body.rider;
+  const terrain = req.body.terrain;
+  const experience = req.body.experience;
+  const city = req.body.city;
+  console.log(req.body);
+  const queryText = 'UPDATE "user" (username, rider, terrain, experience, city) VALUES ($1, $2, $3, $4, $5) RETURNING id';
+  pool.query(queryText, [username, rider, terrain, experience, city])
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+      console.log(err)
+      res.sendStatus(500)
+    });
+})
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route

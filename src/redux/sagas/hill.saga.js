@@ -18,9 +18,9 @@ function* getHills() {
     }
 }
 
-function* submitNewHill() {
+function* submitNewHill(action) {
     try {
-        let response = yield axios.post('/hill')
+        let response = yield axios.post('/hill', action.payload)
         console.log(response.data)
         yield put({ type: 'POST_HILL', payload: response.data })
     }

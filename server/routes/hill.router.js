@@ -19,7 +19,22 @@ router.get('/', (req, res) => {
     })
   })
 
+  router.post('/', (req, res) => {
+    console.log(req.body)
+    // res.sendStatus(201);
+    const queryText = `INSERT INTO "hill" ("name", "open_trails", "hours", "live_view", "about", "logo")
+    VALUES ($1, $2, $3, $4, $5, $6);`
 
+    pool.query(queryText, 
+        [req.body.hillName, req.body.open_trails, req.body.hours, req.body.live_view, req.body.about, req.body.logo])
+    .then( result => {
+      console.log(result.rows)
+        res.send(result.rows)
+    }).catch( error => {
+        console.log('error in hills POST', error)
+        res.sendStatus(500);
+    })
+  })
 
 
 

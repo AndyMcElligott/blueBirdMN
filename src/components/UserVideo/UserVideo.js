@@ -79,6 +79,7 @@ class UserVideo extends Component {
         };
 
         const { classes } = this.props;
+        const {videoId} = this.props;
 
         return (
             <>
@@ -104,15 +105,22 @@ class UserVideo extends Component {
                     <input value={this.state.youtube_id} onChange={this.handleChangeFor} />
                     <input type="submit" onClick={this.handleClick} />
                 </form>
-                <YouTube
-                    // live_view={live_view}
+                <br/>
+
+                <iframe width="560" height="315" src={this.props.reduxStore.user.user_video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {/* <YouTube
+                    videoId={this.props.hill.live_view}
                     opts={opts}
                     onReady={this.videoOnReady}
                     onPlay={this.videoOnPlay}
                     onStateChange={this.videoStateChange}
-                />
-                <DeleteIcon className={classes.icon}
-                    onClick={this.handleDelete} fontSize="large"/>
+                /> */}
+                <br/>
+                <DeleteIcon className={classes.icon} fontSize="large"
+                    onClick={() => this.props.dispatch(
+                        { type: 'DELETE_VIDEO',
+                        //   payload: video
+                        })} />
                 {/* <AddIcon /> */}
             </>
         );
