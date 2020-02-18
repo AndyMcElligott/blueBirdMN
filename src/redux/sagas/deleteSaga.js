@@ -29,7 +29,7 @@ function* deleteHill(action) {
         let id = action.payload
         let response = yield axios.delete(`/hill/${id}`);
         
-        yield put({ type: 'FETCH_HILL' })
+        yield put({ type: 'FETCH_HILLS' })
         console.log(response.data);
     }
     catch (error) {
