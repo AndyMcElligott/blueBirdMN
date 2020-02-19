@@ -9,7 +9,7 @@ import {
 import {connect} from 'react-redux';
 
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+// import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
@@ -19,7 +19,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import LocalHills from '../LocalHills/LocalHills';
 import AddHill from '../AddHill/AddHill';
 import LiveView from '../LiveView/LiveView';
-import UserVideo from '../UserVideo/UserVideo'
+import UserVideo from '../UserVideo/UserVideo';
+import EditUser from '../EditUser/EditUser';
 
 
 import './App.css';
@@ -82,10 +83,15 @@ class App extends Component {
               path="/UserVideo"
               component={UserVideo}
             />
+            <ProtectedRoute
+              exact
+              path="/EditUser"
+              component={EditUser}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Router>
   )}

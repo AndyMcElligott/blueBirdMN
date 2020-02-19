@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './RegisterPage.css'
+// import './RegisterPage.css'
 
 // Material UI Import
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import teal from '@material-ui/core/colors/teal';
-import { Input } from '@material-ui/core';
 
 
 // Bring in MUI styling
@@ -42,31 +42,31 @@ const styles = theme => ({
 class RegisterPage extends Component {
   state = {
     username: '',
-    password: '',
+    // password: '',
     rider: '',
     terrain: '',
     experience: '',
     city: '',
   };
 
-  registerUser = (event) => {
-    event.preventDefault();
+  editUser = (event) => {
+    // event.preventDefault();
 
-    if (this.state.username && this.state.password) {
+    // if (this.state.username && this.state.password) {
       this.props.dispatch({
-        type: 'REGISTER',
+        type: 'EDIT_USER',
         payload: {
           username: this.state.username,
-          password: this.state.password,
+        //   password: this.state.password,
           rider: this.state.rider,
           terrain: this.state.terrain,
           experience: this.state.experience,
           city: this.state.city,
         },
       });
-    } else {
-      this.props.dispatch({ type: 'REGISTRATION_Input_ERROR' });
-    }
+    // } else {
+    //   this.props.dispatch({ type: 'REGISTRATION_Input_ERROR' });
+    // }
   } // end registerUser
 
   handleInputChangeFor = propertyName => (event) => {
@@ -80,25 +80,27 @@ class RegisterPage extends Component {
 
     return (
       <div>
-        {this.props.errors.registrationMessage && (
-          <h2
-            className="alert"
-            role="alert"
-          >
-            {this.props.errors.registrationMessage}
-          </h2>
-        )}
+        {/* {this.props.errors.registrationMessage && ( */}
+        {/*  <h2 */}
+        {/*      className="alert"
+             role="alert"
+           >
+             {this.props.errors.registrationMessage}
+           </h2> */}
+        {/* )} */}
 
         <form onSubmit={this.registerUser} 
-        className="registerUserDiv" noValidate autoComplete="off">
-          <h1>Register User</h1>
+        className="editUserDiv" noValidate autoComplete="off">
+          <h1>Edit User Profile</h1>
           <br/>
-          <div >
+          {/* <div > */}
             {/* <label htmlFor="username"> */}
               {/* Email: */}
-              <TextField
+              {/* <TextField
                 type="text"
                 name= "username"
+                className={classes.input}
+                className={classes.textField}
                 label= "User Name"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
@@ -109,101 +111,77 @@ class RegisterPage extends Component {
                 InputLabelProps={{
                   shrink: true,
                 }}
-              />
+              /> */}
             {/* </label> */}
-          </div>
-          <div>
-            {/* <label htmlFor="password"> */}
-              {/* Password: */}
-              <TextField
+          {/* </div> */}
+          {/* <div>
+            <label htmlFor="password">
+              Password:
+              <Input
                 type="password"
                 name="password"
-                label= "Password"
+                className={classes.input}
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
-                margin="normal"
-                variant="outlined"
-                style={{ margin: 8 }}
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
               />
-            {/* </label> */}
-          </div>
+            </label>
+          </div> */}
           <div>
-              <TextField
-                label="How do you Enjoy the Snow?"
+            <label htmlFor="rider">
+              Rider:
+              <Input
                 type="rider"
                 name="rider"
+                placeholder="    eg. Skier, Boarder, Racer"
+                className={classes.input}
                 value={this.state.rider}
                 onChange={this.handleInputChangeFor('rider')}
-                margin="normal"
-                variant="outlined"
-                style={{ margin: 8 }}
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
               />
+            </label>
           </div>
           <div>
-              <TextField
+            <label htmlFor="terrain">
+              Terrain:
+              <Input
                 type="terrain"
                 name="terrain"
-                label="What Type of Terrain do you Ride?"
+                placeholder="    eg. Park, Race, Back Country"
                 className={classes.input}
                 value={this.state.terrain}
                 onChange={this.handleInputChangeFor('terrain')}
-                margin="normal"
-                variant="outlined"
-                style={{ margin: 8 }}
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
               />
+            </label>
           </div>
           <div>
-              <TextField
+            <label htmlFor="experience">
+              Experience:
+              <Input
                 type="number"
                 name="experience"
-                label="How Many Years of Experience?"
                 value={this.state.experience}
                 onChange={this.handleInputChangeFor('experience')}
-                margin="normal"
-                variant="outlined"
-                style={{ margin: 8 }}
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
               />
+            </label>
           </div>
           <div>
-              <TextField
+            <label htmlFor="city">
+              City:
+              <Input
                 type="city"
                 name="city"
-                label="What City do you Currently Live in?"
                 value={this.state.city}
                 onChange={this.handleInputChangeFor('city')}
-                margin="normal"
-                variant="outlined"
-                style={{ margin: 8 }}
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
               />
+            </label>
           </div>
           <div>
             {/* put the input and btn in own div and apply styling; change register input into a btn? */}
-            <Input
+            {/* <Input
               className="register"
               type="submit"
               name="submit"
               value="Create User"
-            />
+            /> */}
           </div>
         </form>
         <center>
@@ -211,9 +189,9 @@ class RegisterPage extends Component {
             type="button"
             className="link-button"
             variant="contained" color="primary"
-            onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
+            onClick = {()=>{this.editUser()}}
           >
-            Login
+            Save
           </Button>
         </center>
       </div>

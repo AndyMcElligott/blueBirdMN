@@ -7,14 +7,16 @@ import './Nav.css';
 const Nav = (props) => (
   <div className="nav">
     <Link to="/home">
-      <h2 className="nav-title">blueBirdMN</h2>
+      <h2 className="nav-title">blueBirdMN
+        {/* <img className="bird" src="https://i.pinimg.com/564x/ad/b0/dc/adb0dc56ac5ccfe6601ec057354bf7f3.jpg"></img> */}
+      </h2>
     </Link>
     <div className="nav-right">
       <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {props.user.id ? 'Home' : 'Login / Register'}
+        {props.user.id ? 'Profile' : 'Login / Register'}
       </Link>
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
@@ -22,16 +24,16 @@ const Nav = (props) => (
           <Link className="nav-link" to="/LocalHills">
             Local Hills
           </Link>
-          <Link className="nav-link" to="/AddHill">
+          {/* <Link className="nav-link" to="/AddHill">
             Add Hill
-          </Link>
-          <LogOutButton className="nav-link"/>
+          </Link> */}
+          <LogOutButton className="nav-link" />
         </>
       )}
       {/* Always show this link since the about page is not protected */}
-      <Link className="nav-link" to="/about">
+      {/* <Link className="nav-link" to="/about">
         About
-      </Link>
+      </Link> */}
     </div>
   </div>
 );

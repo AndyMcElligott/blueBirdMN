@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
+import EditUser from '../../components/EditUser/EditUser';
 
 // worker Saga: will be fired on "FETCH_USER" actions
 function* fetchUser() {
