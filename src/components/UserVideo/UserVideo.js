@@ -21,7 +21,8 @@ const styles = {
 class UserVideo extends Component {
 
     componentDidMount() {
-        this.props.dispatch({ type: 'FETCH_YOUTUBE' })
+        // this.props.dispatch({ type: 'FETCH_YOUTUBE' })
+        // getUserVideo();
     }
 
     // tab state
@@ -47,9 +48,9 @@ class UserVideo extends Component {
         console.log('deleting this video')
     }
 
-  getUserVideo = () => {
-      this.props.dispatch({ type: 'GET_USERVIDEO'})
-  }
+    getUserVideo = () => {
+        this.props.dispatch({ type: 'GET_USERVIDEO' })
+    }
 
     handleClick = (event) => {
         event.preventDefault()
@@ -102,13 +103,13 @@ class UserVideo extends Component {
                 </form>
                 <br />
                 <div className="userVideoDiv">
-                    {this.props.userVideo.map((userVid) => {
+                    {this.props.userVideoReducer.map((userVid) => {
                         return (
                             <div className="userVideoPlayerDiv">
-                                <iframe width="560" height="315" src={userVid.user_video} frameborder="0"> </iframe>
-                            </div> 
-                            )
-                        })}
+                                <iframe width="560" height="315" src={userVid.user_video} frameborder="0" />
+                            </div>
+                        )
+                    })}
                 </div>
                 {/* <YouTube
                     videoId={this.props.hill.live_view}
@@ -134,7 +135,7 @@ class UserVideo extends Component {
 
 const mapStateToProps = (reduxStore) => ({
     reduxStore,
-    userVideo: reduxStore.userVideo
+    userVideoReducer: reduxStore.userVideoReducer
 });
 
 UserVideo.propTypes = {

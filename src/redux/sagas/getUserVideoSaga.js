@@ -1,13 +1,13 @@
 import axios from 'axios';
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 function* getVideoSaga() {
-    yield takeEvery('GET_USERVIDEO', getUserVideo)
+    yield takeLatest('GET_USERVIDEO', getUserVideo)
 }
 
 function* getUserVideo() {
     try {
-        const response = yield axios.get('/userVideos');
+        const response = yield axios.get('/hill');
         yield put({type: 'SET_USERVIDEO', payload: response.data })
     }
     catch (error) {

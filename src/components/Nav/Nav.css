@@ -1,4 +1,4 @@
-.nav-title {
+.nav-title, .bird {
     font-size: 24px;
     font-weight: 700;
     display: inline-block;
@@ -14,7 +14,7 @@
 .nav-link {
   float: left;
   color: #f2f2f2;
-  background-color: #00acb0;
+  background-color: #3A9A41;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
