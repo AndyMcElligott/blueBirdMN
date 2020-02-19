@@ -11,7 +11,7 @@ function* editUser(action) {
     try {
         console.log('in edit user saga', action.payload)
         let id = action.payload
-        let response = yield axios.put(`/user`, action.payload);
+        let response = yield axios.put(`/api/user`, action.payload);
         console.log('in edit user again')
         yield put({ type: 'FETCH_USER', payload: action.payload })
     }

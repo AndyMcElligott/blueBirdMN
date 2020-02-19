@@ -33,15 +33,15 @@ router.post('/register', (req, res, next) => {
 });
 
 // PUT route to edit user profile; not pw 
-router.put('/:id', (req, res) => {
-  const username = req.params.username;
-  const rider = req.params.rider;
-  const terrain = req.params.terrain;
-  const experience = req.params.experience;
-  const city = req.params.city;
+router.put('/', (req, res) => {
+  console.log(req.user.id)
+  const rider = req.body.rider;
+  const terrain = req.body.terrain;
+  const experience = req.body.experience;
+  const city = req.body.city;
   console.log(req.params);
-  const queryText = `UPDATE "user" SET = "rider" = $1, AND "terrain", "experience", "city" = $1, $2, $3, $4, $5 WHERE id = ${id}`;
-  pool.query(queryText, [username, rider, terrain, experience, city])
+  const queryText = `UPDATE "user" SET "rider" = $1, "terrain" = $2, "experience" = $3, "city" =$4 WHERE id = ${req.user.id}`;
+  pool.query(queryText, [rider, terrain, experience, city])
     .then(() => res.sendStatus(200))
     .catch((err) => {
       console.log(err)
