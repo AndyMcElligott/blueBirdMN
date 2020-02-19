@@ -116,7 +116,7 @@ userVideo = () => {
 }
 
 const mapStateToProps = (reduxStore) => ({
-  reduxStore
+  reduxStore,
 });
 
 InfoPage.propTypes = {

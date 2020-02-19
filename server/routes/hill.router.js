@@ -6,6 +6,7 @@ const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
 
+// get all the hills
 router.get('/', (req, res) => {
   const queryText = 'SELECT * FROM "hill";'
   console.log('in hills router.get', req.body)
@@ -19,6 +20,7 @@ router.get('/', (req, res) => {
     })
 })
 
+// add new hill
 router.post('/', (req, res) => {
   console.log(req.body)
   // res.sendStatus(201);
@@ -36,6 +38,7 @@ router.post('/', (req, res) => {
     })
 })
 
+// delete hill
 router.delete('/:id', (req, res) => {
   console.log('in delete hill router')
   let id = req.params.id;
@@ -48,5 +51,17 @@ router.delete('/:id', (req, res) => {
     res.sendStatus(500);
   })
 });
+
+router.get('/', (req, res) => {
+  console.log('getting user videos')
+  const queryText = `SELECT "id", "user_video" FROM "user";`
+  pool.query(queryText)
+  .then(result => {
+    res.sendStatus(200);
+  }).catch(error => {
+    console.log('ERROR Getting user video', error);
+    res.sendStatus(500);
+  })
+})
 
 module.exports = router;

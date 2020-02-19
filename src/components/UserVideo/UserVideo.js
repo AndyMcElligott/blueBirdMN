@@ -47,14 +47,9 @@ class UserVideo extends Component {
         console.log('deleting this video')
     }
 
-    //// NEED GET ROUTE TO GET USER VIDS
-    //   info = (id) => {
-    //     this.props.dispatch({
-    //         type: 'GET_INFO',
-    //         payload: id
-    //     })
-    //     this.props.history.push(`/infopage`)
-    // }
+  getUserVideo = () => {
+      this.props.dispatch({ type: 'GET_USERVIDEO'})
+  }
 
     handleClick = (event) => {
         event.preventDefault()
@@ -79,7 +74,7 @@ class UserVideo extends Component {
         };
 
         const { classes } = this.props;
-        const {videoId} = this.props;
+        const { videoId } = this.props;
 
         return (
             <>
@@ -105,9 +100,16 @@ class UserVideo extends Component {
                     <input value={this.state.youtube_id} onChange={this.handleChangeFor} />
                     <input type="submit" onClick={this.handleClick} />
                 </form>
-                <br/>
-
-                <iframe width="560" height="315" src={this.props.reduxStore.user.user_video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <br />
+                <div className="userVideoDiv">
+                    {this.props.userVideo.map((userVid) => {
+                        return (
+                            <div className="userVideoPlayerDiv">
+                                <iframe width="560" height="315" src={userVid.user_video} frameborder="0"> </iframe>
+                            </div> 
+                            )
+                        })}
+                </div>
                 {/* <YouTube
                     videoId={this.props.hill.live_view}
                     opts={opts}
@@ -115,12 +117,13 @@ class UserVideo extends Component {
                     onPlay={this.videoOnPlay}
                     onStateChange={this.videoStateChange}
                 /> */}
-                <br/>
+                {/* <br />
                 <DeleteIcon className={classes.icon} fontSize="large"
                     onClick={() => this.props.dispatch(
-                        { type: 'DELETE_VIDEO',
-                        //   payload: video
-                        })} />
+                        {
+                            type: 'DELETE_VIDEO',
+                            //   payload: video
+                        })} /> */}
                 {/* <AddIcon /> */}
             </>
         );
@@ -130,7 +133,8 @@ class UserVideo extends Component {
 
 
 const mapStateToProps = (reduxStore) => ({
-    reduxStore
+    reduxStore,
+    userVideo: reduxStore.userVideo
 });
 
 UserVideo.propTypes = {
