@@ -19,8 +19,13 @@ const styles = {
 class LiveView extends Component {
 
     componentDidMount() {
-        this.props.dispatch({type: 'FETCH_YOUTUBE'})
+        this.props.dispatch({type: 'FETCH_YOUTUBE'}),
+        getUserVideo(this.props.selectedHillReducer.id);
       }
+
+      getUserVideo = (id) => {
+        this.props.dispatch({ type: 'GET_USERVIDEO', payload: id })
+    }
       
       // tab state
       state = {
@@ -101,7 +106,15 @@ class LiveView extends Component {
                     onClick = {()=>{this.userVideo()}} />
                 </Tabs>
             </Paper>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/2WzUGFz03v8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div className="userVideoDiv">
+                    {this.props.userVideoReducer.map((userVid) => {
+                        return (
+                            <div className="userVideoPlayerDiv">
+                                <iframe width="560" height="315" src={userVid.user_video} frameborder="0" />
+                            </div>
+                        )
+                    })}
+                </div>
                 
             </>
         );
@@ -111,7 +124,9 @@ class LiveView extends Component {
 
 
 const mapStateToProps = (reduxStore) => ({
-    reduxStore
+    reduxStore,
+    userVideoReducer: reduxStore.userVideoReducer,
+    selectedHillReducer: reduxStore.selectedHillReducer
   });
   
   LiveView.propTypes = {

@@ -72,13 +72,21 @@ class HillItem extends Component {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
-    info = (id) => {
+    info = (hill) => {
         this.props.dispatch({
             type: 'GET_INFO',
-            payload: id
+            payload: hill
         })
         this.props.history.push(`/infopage`)
     }
+
+    // hillInfo = (action) => {
+    //     console.log(action);
+    //     this.props.dispatch({
+    //       type: 'SET_HILL_INFO',
+    //       payload: action
+    //     })
+    //   }
 
     render() {
 
@@ -113,7 +121,7 @@ class HillItem extends Component {
                             <Chip
                                 //   avatar={<Avatar>MB</Avatar>}
                                 label="More Info"
-                                onClick={() => { this.info(id) }}
+                                onClick={() => { this.info(this.props.hill) }}
                                 className={classes.chip}
                                 color="primary"
                             />
