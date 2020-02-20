@@ -19,8 +19,8 @@ const styles = {
 class LiveView extends Component {
 
     componentDidMount() {
-        this.props.dispatch({type: 'FETCH_YOUTUBE'}),
-        getUserVideo(this.props.selectedHillReducer.id);
+        this.props.dispatch({type: 'FETCH_YOUTUBE'});
+        this.getUserVideo(this.props.selectedHillReducer.live_view);
       }
 
       getUserVideo = (id) => {
@@ -107,13 +107,13 @@ class LiveView extends Component {
                 </Tabs>
             </Paper>
             <div className="userVideoDiv">
-                    {this.props.userVideoReducer.map((userVid) => {
-                        return (
+                    {/* {this.props.userVideoReducer.map((userVid) => {
+                        return ( */}
                             <div className="userVideoPlayerDiv">
-                                <iframe width="560" height="315" src={userVid.user_video} frameborder="0" />
+                                <iframe width="560" height="315" src={this.props.selectedHillReducer.live_view} frameborder="0" />
                             </div>
-                        )
-                    })}
+                        {/* ) */}
+                    {/* })} */}
                 </div>
                 
             </>
