@@ -103,7 +103,7 @@ userVideo = () => {
                     }
                 </div> */}
                 <div className="currentHillInfo">
-                  <p>Hill: {this.props.reduxStore.hill.name} </p>
+                  <p>Hill: {this.props.hillReducer.hill.name} </p>
                   <p>Trails Open: {this.props.slopes}</p>
                   <p>Hours of Operation: </p>
                   <p>About:</p>
@@ -117,6 +117,7 @@ userVideo = () => {
 
 const mapStateToProps = (reduxStore) => ({
   reduxStore,
+  hillReducer: reduxStore.hillReducer,
 });
 
 InfoPage.propTypes = {

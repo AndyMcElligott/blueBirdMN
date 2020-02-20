@@ -64,10 +64,8 @@ class RegisterPage extends Component {
           city: this.state.city,
         },
       });
-    // } else {
-    //   this.props.dispatch({ type: 'REGISTRATION_Input_ERROR' });
-    // }
-  } // end registerUser
+      this.props.history.push(`/home`)
+    }
 
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
