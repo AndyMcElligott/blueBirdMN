@@ -102,15 +102,7 @@ class UserVideo extends Component {
                     <input type="submit" onClick={this.handleClick} />
                 </form>
                 <br />
-                <div className="userVideoDiv">
-                    {this.props.userVideoReducer.map((userVid) => {
-                        return (
-                            <div className="userVideoPlayerDiv">
-                                <iframe width="560" height="315" src={userVid.user_video} frameborder="0" />
-                            </div>
-                        )
-                    })}
-                </div>
+                
                 {/* <YouTube
                     videoId={this.props.hill.live_view}
                     opts={opts}

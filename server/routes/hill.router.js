@@ -54,12 +54,12 @@ router.delete('/:id', (req, res) => {
 
 router.get('/', (req, res) => {
   console.log('getting user videos')
-  const queryText = `SELECT "id", "user_video" FROM "user";`
+  const queryText = `SELECT "live_view" FROM "hill" WHERE "id" = $1;`
   pool.query(queryText)
   .then(result => {
     res.sendStatus(200);
   }).catch(error => {
-    console.log('ERROR Getting user video', error);
+    console.log('ERROR Getting live view', error);
     res.sendStatus(500);
   })
 })

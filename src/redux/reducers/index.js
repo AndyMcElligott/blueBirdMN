@@ -5,6 +5,7 @@ import user from './userReducer';
 import hill from './hillReducer';
 import editUser from './editUserReducer';
 import userVideoReducer from './userVideoReducer';
+import selectedHillReducer from './selectedHillReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   hill,
   editUser,
   userVideoReducer,
+  selectedHillReducer,
 });
 
 export default rootReducer;

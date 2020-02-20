@@ -20,7 +20,7 @@ const styles = {
 class InfoPage extends Component {
 
   componentDidMount() {
-    this.props.dispatch({type: 'FETCH_YOUTUBE'})
+    this.props.dispatch({ type: 'FETCH_YOUTUBE' })
   }
 
   // tab state
@@ -57,11 +57,11 @@ class InfoPage extends Component {
 
   liveView = () => {
     this.props.history.push(`/liveView`)
-}
+  }
 
-userVideo = () => {
-  this.props.history.push(`/userVideo`)
-}
+  userVideo = () => {
+    this.props.history.push(`/userVideo`)
+  }
 
   render() {
 
@@ -76,13 +76,13 @@ userVideo = () => {
             indicatorColor="primary"
             textColor="primary"
             centered
-            // onClick = {()=>{this.liveView()}}
+          // onClick = {()=>{this.liveView()}}
           >
             <Tab label="Hill Info" />
-            <Tab label="Live View" 
-              onClick = {()=>{this.liveView()}} />
-            <Tab label="User Testimony" 
-              onClick = {()=>{this.userVideo()}} />
+            <Tab label="Live View"
+              onClick={() => { this.liveView() }} />
+            <Tab label="User Testimony"
+              onClick={() => { this.userVideo() }} />
           </Tabs>
         </Paper>
         {/* <div style={{ display: 'flex' } }>
@@ -102,12 +102,13 @@ userVideo = () => {
                     })
                     }
                 </div> */}
-                <div className="currentHillInfo">
-                  <p>Hill: {this.props.hillReducer.hill.name} </p>
-                  <p>Trails Open: {this.props.slopes}</p>
-                  <p>Hours of Operation: </p>
-                  <p>About:</p>
-                </div>
+        <div className="currentHillInfo">
+          <p>Hill: </p>
+          {this.props.selectedHillReducer.name} 
+          <p>Trails Open: {this.props.selectedHillReducer.open_trails}</p>
+          <p>Hours of Operation: {this.props.selectedHillReducer.hours} </p>
+          <img src={this.props.selectedHillReducer.trail_map} />
+        </div>
         {/* move below to UserVideo component once made */}
         {/* */}
       </>
@@ -117,11 +118,11 @@ userVideo = () => {
 
 const mapStateToProps = (reduxStore) => ({
   reduxStore,
-  hillReducer: reduxStore.hillReducer,
+  selectedHillReducer: reduxStore.selectedHillReducer
 });
 
 InfoPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withRouter(connect(mapStateToProps) (withStyles(styles)(InfoPage)));
+export default withRouter(connect(mapStateToProps)(withStyles(styles)(InfoPage)));
