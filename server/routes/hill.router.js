@@ -23,12 +23,11 @@ router.get('/', (req, res) => {
 // add new hill
 router.post('/', (req, res) => {
   console.log(req.body)
-  // res.sendStatus(201);
-  const queryText = `INSERT INTO "hill" ("name", "open_trails", "hours", "live_view", "about", "logo")
-    VALUES ($1, $2, $3, $4, $5, $6);`
+  const queryText = `INSERT INTO "hill" ("name", "open_trails", "hours", "live_view", "about", "logo", "avatar", "trail_map")
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`
 
   pool.query(queryText,
-    [req.body.hillName, req.body.open_trails, req.body.hours, req.body.live_view, req.body.about, req.body.logo])
+    [req.body.hillName, req.body.open_trails, req.body.hours, req.body.live_view, req.body.about, req.body.logo, req.body.avatar, req.body.trail_map])
     .then(result => {
       console.log(result.rows)
       res.send(result.rows)

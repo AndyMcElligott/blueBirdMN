@@ -51,6 +51,7 @@ class AddHill extends Component {
         logo: this.state.logo,
         about: this.state.about,
         avatar: this.state.avatar,
+        trail_map: this.state.trail_map,
       },
     });
   };
@@ -128,6 +129,15 @@ class AddHill extends Component {
             className={classes.textField}
             value={this.state.info}
             onChange={this.handleInputChangeFor('about')}
+            margin="normal"
+            variant="filled"
+          />
+          <TextField
+            id="filled-name"
+            label="Trail Map"
+            className={classes.textField}
+            value={this.state.trail_map}
+            onChange={this.handleInputChangeFor('trail_map')}
             margin="normal"
             variant="filled"
           />
