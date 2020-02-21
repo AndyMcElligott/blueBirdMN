@@ -7,9 +7,14 @@ function* infoSaga() {
 }
 
 function* postYoutube(action) {
+    try {
     console.log('in postYoutube saga', action.payload)
     let response = yield axios.post(`/info`, action.payload)
     yield put({type: 'FETCH_YOUTUBE'})
+    }
+    catch(err) {
+        console.log(err)
+    }
 }
 
 function* fetchYouTube() {

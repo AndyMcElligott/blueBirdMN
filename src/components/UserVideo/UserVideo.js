@@ -38,10 +38,10 @@ class UserVideo extends Component {
         this.setState({ value });
     };
 
-    handleChangeFor = (event) => {
+    handleVideoChange = (event) => {
         console.log(event.target.value)
         this.setState({
-            youtube_id: event.target.value
+            user_video: event.target.value
 
         })
     };
@@ -58,8 +58,11 @@ class UserVideo extends Component {
         event.preventDefault()
         this.props.dispatch({
             type: 'POST_YOUTUBE',
-            payload: this.state.newHill
-        })
+            payload: {
+                url: this.state.user_video,
+                hill: this.props.reduxStore.selectedHillReducer
+            }
+            })
     }
 
     liveView = () => {
@@ -111,7 +114,7 @@ class UserVideo extends Component {
                         align="center"
                         className={classes.input}
                         value={this.state.user_video}
-                        // onChange={this.handleInputChangeFor('user_video')}
+                        onChange={this.handleVideoChange}
                     />
                     <br/>
                     <br />
@@ -124,35 +127,25 @@ class UserVideo extends Component {
                     > Submit URL
                     </Button>
                     <br />
-                    <h4> User Video's</h4>
+                    <h2> User Video's</h2>
 
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/HvB8DUhIRgk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/HvB8DUhIRgk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
 
-                    {/* {this.props.userVideoReducer.map((userVid) => {
+                    {this.props.userVideoReducer.map((userVid) => {
+                        console.log(userVid)
                         return (
                             <div className="userVideoPlayerDiv">
-                                <iframe width="560" height="315" src={this.props.selectedHillReducer.user_video} frameborder="0" />
+                                <iframe width="560" height="315" src={userVid.youtube_id} frameborder="0" />
                             </div>
                         )
-                        })} */}
+                        })}
                 </div>
-                {/* <br /> */}
-
-                {/* <YouTube
-                    videoId={this.props.hill.live_view}
-                    opts={opts}
-                    onReady={this.videoOnReady}
-                    onPlay={this.videoOnPlay}
-                    onStateChange={this.videoStateChange}
-                /> */}
-                {/* <br />
-                <DeleteIcon className={classes.icon} fontSize="large"
+                {/* <DeleteIcon className={classes.icon} fontSize="large"
                     onClick={() => this.props.dispatch(
                         {
                             type: 'DELETE_VIDEO',
                             //   payload: video
-                        })} /> */}
-                {/* <AddIcon /> */}
+                        })} />  */}
             </>
         );
     }

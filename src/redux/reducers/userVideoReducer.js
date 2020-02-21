@@ -1,5 +1,5 @@
 const userVideoReducer = (state= [], action) => {
-    if (action.type === 'SET_USERVIDEO') {
+    if (action.type === 'SET_YOUTUBE') {
         return action.payload;
     }
     return state;

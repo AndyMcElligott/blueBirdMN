@@ -29,9 +29,10 @@ import DeleteIcon from '@material-ui/icons/Delete';
 const styles = theme => ({
     card: {
         maxWidth: 400,
-        marginLeft: '5em',
+        marginLeft: '2em',
         marginTop: '2em',
-        // direction: 'grid'
+        marginRight: '2em',
+        direction: 'grid'
     },
     media: {
         height: 0,
@@ -65,6 +66,7 @@ class HillItem extends Component {
 
     state = {
         expanded: false,
+        spacing: '8',
     };
 
     handleExpandClick = () => {
