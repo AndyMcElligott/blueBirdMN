@@ -29,29 +29,29 @@ class UserPage extends Component {
       </h1>
       {/* <p>Your ID is: {props.user.id}</p> */}
     </div>
-    <div className="userInfo">
-      <label>
+    <div>
+      <label className="userInfo">
         You are this type of rider:
       <br />
-        {this.props.user.rider}
+        <p className="userResponse">{this.props.user.rider}</p>
         <br />
       </label>
       <br />
-      <label>
+      <label className="userInfo">
         This is the type of terrain you like to ride:
       <br />
         {this.props.user.terrain}
         <br />
       </label>
       <br />
-      <label>
+      <label className="userInfo">
         This is how many years of experience you have on the snow:
       <br />
         {this.props.user.experience}
         <br />
       </label>
       <br />
-      <label>
+      <label className="userInfo">
         This is the city you currently reside in:
       <br />
         {this.props.user.city}
@@ -63,8 +63,9 @@ class UserPage extends Component {
       className="editButton"
       variant="contained"
       color="secondary"
-      margin-left="5em" 
+      // margin-left="5em" 
       onClick={editUser}
+      marginLeft= "5em"
       >Edit</Button>
     <br />
     <br />

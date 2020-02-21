@@ -42,7 +42,6 @@ const styles = theme => ({
 class RegisterPage extends Component {
   state = {
     username: '',
-    // password: '',
     rider: '',
     terrain: '',
     experience: '',
@@ -130,7 +129,7 @@ class RegisterPage extends Component {
               <Input
                 type="rider"
                 name="rider"
-                placeholder="    eg. Skier, Boarder, Racer"
+                placeholder="eg. Skier, Boarder, Racer"
                 className={classes.input}
                 value={this.state.rider}
                 onChange={this.handleInputChangeFor('rider')}

@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   console.log('Sending this url to database:', req.body.youtube_id)
   const newVideo = req.body.youtube_id;
-  const queryText = `INSERT INTO "video" ("youtube_id", "date_time", "hill_id") VALUES ($1, $2, $3)`;
+  const queryText = `INSERT INTO "user" ("youtube_id") VALUES ($1)`;
   pool.query(queryText, [newVideo])
     .then(() => { res.sendStatus(200) })
     .catch((err) => {

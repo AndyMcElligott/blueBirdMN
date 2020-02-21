@@ -10,6 +10,8 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 
 
 const styles = {
@@ -29,7 +31,7 @@ class UserVideo extends Component {
     state = {
         value: 0,
         playerObj: '',
-        youtube_id: '',
+        user_video: '',
     };
 
     handleChange = (event, value) => {
@@ -61,6 +63,10 @@ class UserVideo extends Component {
     }
 
     liveView = () => {
+        this.props.history.push(`/liveView`)
+    }
+
+    info = () => {
         this.props.history.push(`/liveView`)
     }
 
@@ -96,15 +102,42 @@ class UserVideo extends Component {
                         <Tab label="User Testimony" />
                     </Tabs>
                 </Paper>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/HvB8DUhIRgk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-                {/* <form onSubmit={this.handleClick} className="youtubePlayer">
-                    <label> youTube URL </label>
-                    <input value={this.state.youtube_id} onChange={this.handleChangeFor} />
-                    <input type="submit" onClick={this.handleClick} />
-                </form>
-                <br /> */}
-                
+                <div className="userVideoDiv">
+                    <Input
+                        type="text"
+                        placeholder="URL"
+                        name="terrain"
+                        align="center"
+                        className={classes.input}
+                        value={this.state.user_video}
+                        // onChange={this.handleInputChangeFor('user_video')}
+                    />
+                    <br/>
+                    <br />
+                    <Button
+                        onClick={this.handleClick}
+                        label="Submit URL"
+                        type="button"
+                        className="link-button"
+                        variant="contained" color="primary"
+                    > Submit URL
+                    </Button>
+                    <br />
+                    <h4> User Video's</h4>
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/HvB8DUhIRgk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    {/* {this.props.userVideoReducer.map((userVid) => {
+                        return (
+                            <div className="userVideoPlayerDiv">
+                                <iframe width="560" height="315" src={this.props.selectedHillReducer.user_video} frameborder="0" />
+                            </div>
+                        )
+                        })} */}
+                </div>
+                {/* <br /> */}
+
                 {/* <YouTube
                     videoId={this.props.hill.live_view}
                     opts={opts}
@@ -129,7 +162,8 @@ class UserVideo extends Component {
 
 const mapStateToProps = (reduxStore) => ({
     reduxStore,
-    userVideoReducer: reduxStore.userVideoReducer
+    userVideoReducer: reduxStore.userVideoReducer,
+    selectedHillReducer: reduxStore.selectedHillReducer,
 });
 
 UserVideo.propTypes = {
