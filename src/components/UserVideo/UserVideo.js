@@ -96,12 +96,14 @@ class UserVideo extends Component {
                         <Tab label="User Testimony" />
                     </Tabs>
                 </Paper>
-                <form onSubmit={this.handleClick} className="youtubePlayer">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/HvB8DUhIRgk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                {/* <form onSubmit={this.handleClick} className="youtubePlayer">
                     <label> youTube URL </label>
                     <input value={this.state.youtube_id} onChange={this.handleChangeFor} />
                     <input type="submit" onClick={this.handleClick} />
                 </form>
-                <br />
+                <br /> */}
                 
                 {/* <YouTube
                     videoId={this.props.hill.live_view}
