@@ -22,7 +22,7 @@ class LocalHills extends Component {
         // const { classes } = props;
         return (
             <Router>
-                <div>
+                <div className="hillItem">
                     {this.props.reduxStore.hill.map(hill => {
                         return (
                             <HillItem key={hill.id}

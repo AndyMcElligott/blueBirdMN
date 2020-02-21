@@ -14,6 +14,7 @@ import Tab from '@material-ui/core/Tab';
 const styles = {
   root: {
     flexGrow: 1,
+    fontFamily: 'snowblobs',
   },
 };
 
@@ -36,24 +37,6 @@ class InfoPage extends Component {
   handleChange = (event, value) => {
     this.setState({ value });
   };
-
-  // handleChangeFor = (event, propertyName) => {
-  //   console.log(event.target.value)
-  //   this.setState({
-  //     newHill: {
-  //       ...this.state.newHill,
-  //       [propertyName]: event.target.value
-  //     }
-  //   })
-  // };
-
-  // handleClick = (event) => {
-  //   event.preventDefault()
-  //   this.props.dispatch({
-  //     type: 'POST_YOUTUBE',
-  //     payload: this.state.newHill
-  //   })
-  // }
 
   liveView = () => {
     this.props.history.push(`/liveView`)
@@ -103,14 +86,12 @@ class InfoPage extends Component {
                     }
                 </div> */}
         <div className="currentHillInfo">
-          <p>Hill: </p>
+          <p className="hill">Hill: </p>
           {this.props.selectedHillReducer.name} 
-          <p>Trails Open: {this.props.selectedHillReducer.open_trails}</p>
-          <p>Hours of Operation: {this.props.selectedHillReducer.hours} </p>
+          <p className="trails">Trails Open: {this.props.selectedHillReducer.open_trails}</p>
+          <p className="hours">Hours of Operation: {this.props.selectedHillReducer.hours} </p>
           <img src={this.props.selectedHillReducer.trail_map} />
         </div>
-        {/* move below to UserVideo component once made */}
-        {/* */}
       </>
     );
   }

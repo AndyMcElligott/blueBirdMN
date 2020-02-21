@@ -29,14 +29,14 @@ import DeleteIcon from '@material-ui/icons/Delete';
 const styles = theme => ({
     card: {
         maxWidth: 400,
-        marginLeft: '5em',
+        marginLeft: '2em',
         marginTop: '2em',
-        // direction: 'grid'
+        marginRight: '2em',
+        direction: 'grid'
     },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
-        // display: 'flex',
     },
     actions: {
         display: 'flex',
@@ -66,6 +66,7 @@ class HillItem extends Component {
 
     state = {
         expanded: false,
+        spacing: '8',
     };
 
     handleExpandClick = () => {
@@ -100,59 +101,60 @@ class HillItem extends Component {
         return (
 
             <>
-                {/* <h3>khkhkh</h3> */}
-                <Card className={classes.card} >
-                    <CardHeader
-                        avatar={
-                            <Avatar aria-label="Buck Hill" className={classes.avatar}>
-                                {this.props.hill.avatar}
-                            </Avatar>
-                        }
-                        title={this.props.hill.name}
-                    />
-                    <CardMedia
-                        style={{ height: 1, paddingTop: '56.25%' }}
-                        image={this.props.hill.logo}
-                    >
-
-                    </CardMedia>
-                    <CardActions className={classes.actions} disableActionSpacing>
-                        <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
-                            <Chip
-                                //   avatar={<Avatar>MB</Avatar>}
-                                label="More Info"
-                                onClick={() => { this.info(this.props.hill) }}
-                                className={classes.chip}
-                                color="primary"
-                            />
-                        </IconButton>
-                        <IconButton
-                            // className={classnames(classes.expand, {
-                            //     [classes.expandOpen]: this.state.expanded,
-                            // })}
-                            onClick={this.handleExpandClick}
-                            aria-expanded={this.state.expanded}
-                            aria-label="Show more"
+                <div className="hillCard">
+                    <Card className={classes.card} >
+                        <CardHeader
+                            avatar={
+                                <Avatar aria-label="Buck Hill" className={classes.avatar}>
+                                    {this.props.hill.avatar}
+                                </Avatar>
+                            }
+                            title={this.props.hill.name}
+                        />
+                        <CardMedia
+                            style={{ height: 1, paddingTop: '56.25%' }}
+                            image={this.props.hill.logo}
                         >
-                            <ExpandMoreIcon />
-                        </IconButton>
-                    </CardActions>
-                    <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                        <CardContent>
-                            <Typography paragraph>
-                                About:
+
+                        </CardMedia>
+                        <CardActions className={classes.actions} disableActionSpacing>
+                            <IconButton aria-label="More Info" className={classes.icon} color="disabled" fontSize="large">
+                                <Chip
+                                    //   avatar={<Avatar>MB</Avatar>}
+                                    label="More Info"
+                                    onClick={() => { this.info(this.props.hill) }}
+                                    className={classes.chip}
+                                    color="primary"
+                                />
+                            </IconButton>
+                            <IconButton
+                                // className={classnames(classes.expand, {
+                                //     [classes.expandOpen]: this.state.expanded,
+                                // })}
+                                onClick={this.handleExpandClick}
+                                aria-expanded={this.state.expanded}
+                                aria-label="Show more"
+                            >
+                                <ExpandMoreIcon />
+                            </IconButton>
+                        </CardActions>
+                        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                            <CardContent>
+                                <Typography paragraph>
+                                    About:
                                     <br />
-                                {this.props.hill.about}
-                            </Typography>
-                            <DeleteIcon className={classes.icon} fontSize="large"
-                                onClick={() => this.props.dispatch(
-                                    {
-                                        type: 'DELETE_HILL',
-                                        payload: this.props.hill.id
-                                    })} />
-                        </CardContent>
-                    </Collapse>
-                </Card>
+                                    {this.props.hill.about}
+                                </Typography>
+                                <DeleteIcon className={classes.icon} fontSize="large"
+                                    onClick={() => this.props.dispatch(
+                                        {
+                                            type: 'DELETE_HILL',
+                                            payload: this.props.hill.id
+                                        })} />
+                            </CardContent>
+                        </Collapse>
+                    </Card>
+                </div>
             </>
         )
     }

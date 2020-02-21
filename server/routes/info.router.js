@@ -20,10 +20,11 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log('Sending this url to database:', req.body.youtube_id)
-  const newVideo = req.body.youtube_id;
-  const queryText = `INSERT INTO "video" ("youtube_id", "date_time", "hill_id") VALUES ($1, $2, $3)`;
-  pool.query(queryText, [newVideo])
+  console.log('Sending this url to database:', req.body)
+  const newVideo = req.body.url;
+  const hillID = req.body.hill.id
+  const queryText = `INSERT INTO "video" (youtube_id, hill_id) VALUES ($1, $2)`;
+  pool.query(queryText, [newVideo, hillID])
     .then(() => { res.sendStatus(200) })
     .catch((err) => {
       console.log('error in post route query thing', err)
