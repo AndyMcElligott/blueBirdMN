@@ -24,10 +24,14 @@ body {
   font-family: "snowblobs";
 }
 
-.hillcard,
+.hillcard {
+  margin-left: 5em;
+}
+
 .editButton {
   margin-left: 5em;
 }
+
 ::placeholder {
   text-align: center;
 }
@@ -42,11 +46,11 @@ body {
   text-align: center;
 }
 
-.userInfo {
+/* .userInfo {
   margin-left: 5em;
   font-family: "snowblobs";
   text-align: center;
-}
+} */
 
 .userVideoDiv {
   margin-top: 3em;
@@ -85,7 +89,6 @@ input {
   min-width: 100px;
   outline: 0;
   cursor: pointer;
-  margin-left: 5em;
 }
 
 .loginDiv {
@@ -94,7 +97,6 @@ input {
 
 .newUserButton {
   margin-top: 25px;
-  margin-left: 50px;
 }
 
 .log-in:hover,
@@ -104,12 +106,17 @@ input {
 }
 
 .registerUserDiv,
-.editUserDiv {
+.editUserDiv,
+.userInfo,
+.userNameDiv {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: left;
   font-family: "snowblobs";
+  margin-left: 250px;
+  margin-right: 250px;
+  text-align: center;
 }
 
 .saveEditUserButton {
@@ -117,6 +124,5 @@ input {
 }
 
 .registerLoginBtn {
-  margin-top: 510px;
-  margin-left: 300px;
+  margin-top: 580px;
 }

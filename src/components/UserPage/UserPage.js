@@ -23,12 +23,13 @@ class UserPage extends Component {
   return (
 
   <>
-    <div>
+    <div className="userNameDiv">
       <h1 id="welcome">
         Hello, {this.props.user.username}!
       </h1>
       {/* <p>Your ID is: {props.user.id}</p> */}
     </div>
+    <br />
     <div>
       <label className="userInfo">
         You are this type of rider:
@@ -36,28 +37,28 @@ class UserPage extends Component {
         <p className="userResponse">{this.props.user.rider}</p>
         <br />
       </label>
-      <br />
+      
       <label className="userInfo">
         This is the type of terrain you like to ride:
       <br />
-        {this.props.user.terrain}
+      <p className="userResponse">{this.props.user.terrain}</p>
         <br />
       </label>
-      <br />
+      
       <label className="userInfo">
         This is how many years of experience you have on the snow:
       <br />
-        {this.props.user.experience}
+      <p className="userResponse">{this.props.user.experience}</p>
         <br />
       </label>
-      <br />
+      
       <label className="userInfo">
         This is the city you currently reside in:
       <br />
-        {this.props.user.city}
+      <p className="userResponse">{this.props.user.city}</p>
         <br />
       </label>
-      <br />
+      
     </div>
     <Button
       className="editButton"

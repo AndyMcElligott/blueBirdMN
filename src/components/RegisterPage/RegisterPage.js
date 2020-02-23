@@ -27,6 +27,9 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
   },
+  input: {
+    color: "black"
+  },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -93,9 +96,7 @@ class RegisterPage extends Component {
           className="registerUserDiv" noValidate autoComplete="off">
           <h1>Register User</h1>
           <br />
-          <div >
-            {/* <label htmlFor="username"> */}
-            {/* Email: */}
+          <div className="createUserDiv">
             <TextField
               type="text"
               name="username"
@@ -103,18 +104,14 @@ class RegisterPage extends Component {
               value={this.state.username}
               onChange={this.handleInputChangeFor('username')}
               margin="normal"
-              variant="outlined"
-              style={{ margin: 8 }}
-              fullWidth={true}
-              InputLabelProps={{
+              variant="filled"
+              InputProps={{
                 shrink: true,
+                className: classes.input,
               }}
             />
-            {/* </label> */}
           </div>
           <div>
-            {/* <label htmlFor="password"> */}
-            {/* Password: */}
             <TextField
               type="password"
               name="password"
@@ -122,28 +119,25 @@ class RegisterPage extends Component {
               value={this.state.password}
               onChange={this.handleInputChangeFor('password')}
               margin="normal"
-              variant="outlined"
-              style={{ margin: 8 }}
-              fullWidth
-              InputLabelProps={{
+              variant="filled"
+              InputProps={{
                 shrink: true,
+                className: classes.input,
               }}
             />
             {/* </label> */}
           </div>
           <div>
             <TextField
-              label="How do you Enjoy the Snow?"
+              label="Type of Rider?"
               type="rider"
               name="rider"
               value={this.state.rider}
               onChange={this.handleInputChangeFor('rider')}
-              margin="normal"
-              variant="outlined"
-              style={{ margin: 8 }}
-              fullWidth
-              InputLabelProps={{
+              variant="filled"
+              InputProps={{
                 shrink: true,
+                className: classes.input,
               }}
             />
           </div>
@@ -151,16 +145,15 @@ class RegisterPage extends Component {
             <TextField
               type="terrain"
               name="terrain"
-              label="What Type of Terrain do you Ride?"
+              label="Type of Terrain"
               className={classes.input}
               value={this.state.terrain}
               onChange={this.handleInputChangeFor('terrain')}
               margin="normal"
-              variant="outlined"
-              style={{ margin: 8 }}
-              fullWidth
-              InputLabelProps={{
+              variant="filled"
+              InputProps={{
                 shrink: true,
+                className: classes.input,
               }}
             />
           </div>
@@ -168,15 +161,14 @@ class RegisterPage extends Component {
             <TextField
               type="number"
               name="experience"
-              label="How Many Years of Experience?"
+              label="Years of Experience?"
               value={this.state.experience}
               onChange={this.handleInputChangeFor('experience')}
               margin="normal"
-              variant="outlined"
-              style={{ margin: 8 }}
-              fullWidth
-              InputLabelProps={{
+              variant="filled"
+              InputProps={{
                 shrink: true,
+                className: classes.input,
               }}
             />
           </div>
@@ -184,15 +176,14 @@ class RegisterPage extends Component {
             <TextField
               type="city"
               name="city"
-              label="What City do you Currently Live in?"
+              label="Current City"
               value={this.state.city}
               onChange={this.handleInputChangeFor('city')}
               margin="normal"
-              variant="outlined"
-              style={{ margin: 8 }}
-              fullWidth
-              InputLabelProps={{
+              variant="filled"
+              InputProps={{
                 shrink: true,
+                className: classes.input,
               }}
             />
           </div>

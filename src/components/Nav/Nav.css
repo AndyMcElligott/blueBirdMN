@@ -5,6 +5,7 @@
     color: #f2f2f2;
     padding-left: 10px;
     font-family: 'snowblobs';
+    margin-left: 50px;
 }
 
 .nav {
@@ -20,6 +21,7 @@
   padding: 24px 10px;
   text-decoration: none;
   font-size: 20px;
+  margin-right: 30px;
 
   /* these last two make the logout button in
   the nav bar look like another link */
