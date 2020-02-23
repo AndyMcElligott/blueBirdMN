@@ -26,6 +26,7 @@ const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    textAlign: 'center',
   },
   input: {
     color: "black"
@@ -95,7 +96,7 @@ class RegisterPage extends Component {
         <form onSubmit={this.registerUser}
           className="registerUserDiv" noValidate autoComplete="off">
           <h1>Register User</h1>
-          <br />
+          
           <div className="createUserDiv">
             <TextField
               type="text"
@@ -103,8 +104,9 @@ class RegisterPage extends Component {
               label="User Name"
               value={this.state.username}
               onChange={this.handleInputChangeFor('username')}
-              margin="normal"
+              margin="dense"
               variant="filled"
+              fullWidth
               InputProps={{
                 shrink: true,
                 className: classes.input,
@@ -118,14 +120,14 @@ class RegisterPage extends Component {
               label="Password"
               value={this.state.password}
               onChange={this.handleInputChangeFor('password')}
-              margin="normal"
+              margin="dense"
               variant="filled"
+              fullWidth
               InputProps={{
                 shrink: true,
                 className: classes.input,
               }}
             />
-            {/* </label> */}
           </div>
           <div>
             <TextField
@@ -135,6 +137,7 @@ class RegisterPage extends Component {
               value={this.state.rider}
               onChange={this.handleInputChangeFor('rider')}
               variant="filled"
+              fullWidth
               InputProps={{
                 shrink: true,
                 className: classes.input,
@@ -145,12 +148,13 @@ class RegisterPage extends Component {
             <TextField
               type="terrain"
               name="terrain"
-              label="Type of Terrain"
+              label="Type of Terrain?"
               className={classes.input}
               value={this.state.terrain}
               onChange={this.handleInputChangeFor('terrain')}
-              margin="normal"
+              margin="dense"
               variant="filled"
+              fullWidth
               InputProps={{
                 shrink: true,
                 className: classes.input,
@@ -164,8 +168,9 @@ class RegisterPage extends Component {
               label="Years of Experience?"
               value={this.state.experience}
               onChange={this.handleInputChangeFor('experience')}
-              margin="normal"
+              margin="dense"
               variant="filled"
+              fullWidth
               InputProps={{
                 shrink: true,
                 className: classes.input,
@@ -179,8 +184,9 @@ class RegisterPage extends Component {
               label="Current City"
               value={this.state.city}
               onChange={this.handleInputChangeFor('city')}
-              margin="normal"
+              margin="dense"
               variant="filled"
+              fullWidth
               InputProps={{
                 shrink: true,
                 className: classes.input,

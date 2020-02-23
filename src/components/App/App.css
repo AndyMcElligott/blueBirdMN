@@ -105,7 +105,6 @@ input {
   background-color: #3a9a41;
 }
 
-.registerUserDiv,
 .editUserDiv,
 .userInfo,
 .userNameDiv {
@@ -124,5 +123,16 @@ input {
 }
 
 .registerLoginBtn {
-  margin-top: 580px;
+  margin-top: 470px;
+}
+
+.registerUserDiv {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  font-family: "snowblobs";
+  margin-left: 400px;
+  margin-right: 400px;
+  text-align: center;
 }
