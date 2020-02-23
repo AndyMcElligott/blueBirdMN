@@ -105,7 +105,7 @@ class RegisterPage extends Component {
                 margin="normal"
                 variant="outlined"
                 style={{ margin: 8 }}
-                fullWidth
+                fullWidth={true}
                 InputLabelProps={{
                   shrink: true,
                 }}

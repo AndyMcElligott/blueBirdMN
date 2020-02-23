@@ -32,7 +32,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="loginDiv">
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -70,14 +70,14 @@ class LoginPage extends Component {
               className="log-in"
               type="submit"
               name="submit"
-              value="Log In"
+              value="LOG IN"
             />
           </div>
         </form>
-        <center>
+        <center className="newUserButton">
           <Button
-            type="button"
-            className="link-button"
+            style={{ flex: 1 }}
+            marginLeft="1em"
             variant="contained" color="primary"
             onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
           >
