@@ -68,30 +68,21 @@ class InfoPage extends Component {
               onClick={() => { this.userVideo() }} />
           </Tabs>
         </Paper>
-        {/* <div style={{ display: 'flex' } }>
-                    {this.props.reduxStore.hill.map(hill => {
-                        return (
-                            <HillItem 
-                                id={hill.id} 
-                                title={hill.name}
-                                hours={hill.hours}
-                                terrain={hill.terrain}
-                                slopes={hill.slopes}
-                                live={hill.live_view}
-                                about={hill.about}
-                                logo={hill.logo}
-                            />
-                        )
-                    })
-                    }
-                </div> */}
+
         <div className="currentHillInfo">
-          <p className="hill">Hill: </p>
-          {this.props.selectedHillReducer.name} 
-          <p className="trails">Trails Open: {this.props.selectedHillReducer.open_trails}</p>
-          <p className="hours">Hours of Operation: {this.props.selectedHillReducer.hours} </p>
-          <img src={this.props.selectedHillReducer.trail_map} />
+          <h2 className="hill">Hill: </h2>
+            <h3 className="selectedHillName">{this.props.selectedHillReducer.name}</h3>
+          <h2 className="trails">Trails Open: </h2>
+            <h3 className="selectedHillName">{this.props.selectedHillReducer.open_trails}</h3>
+          <h2 className="hours">Hours of Operation:</h2>
+            <h3 className="selectedHillName">{this.props.selectedHillReducer.hours}</h3>
+          <h2 className="price">Lift Ticket Prices:</h2>
+          {/* add lift ticket prices to DB */}
         </div>
+        <div className="trailMapDiv">
+          <img className="trailMap" src={this.props.selectedHillReducer.trail_map} />
+        </div>
+
       </>
     );
   }
