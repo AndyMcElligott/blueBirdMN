@@ -89,112 +89,112 @@ class RegisterPage extends Component {
           </h2>
         )}
 
-        <form onSubmit={this.registerUser} 
-        className="registerUserDiv" noValidate autoComplete="off">
+        <form onSubmit={this.registerUser}
+          className="registerUserDiv" noValidate autoComplete="off">
           <h1>Register User</h1>
-          <br/>
+          <br />
           <div >
             {/* <label htmlFor="username"> */}
-              {/* Email: */}
-              <TextField
-                type="text"
-                name= "username"
-                label= "User Name"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-                margin="normal"
-                variant="outlined"
-                style={{ margin: 8 }}
-                fullWidth={true}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+            {/* Email: */}
+            <TextField
+              type="text"
+              name="username"
+              label="User Name"
+              value={this.state.username}
+              onChange={this.handleInputChangeFor('username')}
+              margin="normal"
+              variant="outlined"
+              style={{ margin: 8 }}
+              fullWidth={true}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
             {/* </label> */}
           </div>
           <div>
             {/* <label htmlFor="password"> */}
-              {/* Password: */}
-              <TextField
-                type="password"
-                name="password"
-                label= "Password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-                margin="normal"
-                variant="outlined"
-                style={{ margin: 8 }}
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+            {/* Password: */}
+            <TextField
+              type="password"
+              name="password"
+              label="Password"
+              value={this.state.password}
+              onChange={this.handleInputChangeFor('password')}
+              margin="normal"
+              variant="outlined"
+              style={{ margin: 8 }}
+              fullWidth
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
             {/* </label> */}
           </div>
           <div>
-              <TextField
-                label="How do you Enjoy the Snow?"
-                type="rider"
-                name="rider"
-                value={this.state.rider}
-                onChange={this.handleInputChangeFor('rider')}
-                margin="normal"
-                variant="outlined"
-                style={{ margin: 8 }}
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+            <TextField
+              label="How do you Enjoy the Snow?"
+              type="rider"
+              name="rider"
+              value={this.state.rider}
+              onChange={this.handleInputChangeFor('rider')}
+              margin="normal"
+              variant="outlined"
+              style={{ margin: 8 }}
+              fullWidth
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
           </div>
           <div>
-              <TextField
-                type="terrain"
-                name="terrain"
-                label="What Type of Terrain do you Ride?"
-                className={classes.input}
-                value={this.state.terrain}
-                onChange={this.handleInputChangeFor('terrain')}
-                margin="normal"
-                variant="outlined"
-                style={{ margin: 8 }}
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+            <TextField
+              type="terrain"
+              name="terrain"
+              label="What Type of Terrain do you Ride?"
+              className={classes.input}
+              value={this.state.terrain}
+              onChange={this.handleInputChangeFor('terrain')}
+              margin="normal"
+              variant="outlined"
+              style={{ margin: 8 }}
+              fullWidth
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
           </div>
           <div>
-              <TextField
-                type="number"
-                name="experience"
-                label="How Many Years of Experience?"
-                value={this.state.experience}
-                onChange={this.handleInputChangeFor('experience')}
-                margin="normal"
-                variant="outlined"
-                style={{ margin: 8 }}
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+            <TextField
+              type="number"
+              name="experience"
+              label="How Many Years of Experience?"
+              value={this.state.experience}
+              onChange={this.handleInputChangeFor('experience')}
+              margin="normal"
+              variant="outlined"
+              style={{ margin: 8 }}
+              fullWidth
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
           </div>
           <div>
-              <TextField
-                type="city"
-                name="city"
-                label="What City do you Currently Live in?"
-                value={this.state.city}
-                onChange={this.handleInputChangeFor('city')}
-                margin="normal"
-                variant="outlined"
-                style={{ margin: 8 }}
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+            <TextField
+              type="city"
+              name="city"
+              label="What City do you Currently Live in?"
+              value={this.state.city}
+              onChange={this.handleInputChangeFor('city')}
+              margin="normal"
+              variant="outlined"
+              style={{ margin: 8 }}
+              fullWidth
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
           </div>
           <div>
             {/* put the input and btn in own div and apply styling; change register input into a btn? */}
@@ -202,20 +202,22 @@ class RegisterPage extends Component {
               className="register"
               type="submit"
               name="submit"
-              value="Create User"
+              value="CREATE"
             />
           </div>
         </form>
-        <center>
-          <Button
-            type="button"
-            className="link-button"
-            variant="contained" color="primary"
-            onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
-          >
-            Login
+        <div className="registerLoginBtn">
+          <center>
+            <Button
+              type="button"
+              className="link-button"
+              variant="contained" color="primary"
+              onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
+            >
+              Login
           </Button>
-        </center>
+          </center>
+        </div>
       </div>
     );
   }

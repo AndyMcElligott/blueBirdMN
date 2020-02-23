@@ -74,7 +74,8 @@ class LoginPage extends Component {
             />
           </div>
         </form>
-        <center className="newUserButton">
+        <div className="newUserButton">
+        <center>
           <Button
             style={{ flex: 1 }}
             marginLeft="1em"
@@ -84,6 +85,7 @@ class LoginPage extends Component {
             New User
           </Button>
         </center>
+        </div>
       </div>
     );
   }

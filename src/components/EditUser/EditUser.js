@@ -52,19 +52,19 @@ class RegisterPage extends Component {
     // event.preventDefault();
 
     // if (this.state.username && this.state.password) {
-      this.props.dispatch({
-        type: 'EDIT_USER',
-        payload: {
-          username: this.state.username,
+    this.props.dispatch({
+      type: 'EDIT_USER',
+      payload: {
+        username: this.state.username,
         //   password: this.state.password,
-          rider: this.state.rider,
-          terrain: this.state.terrain,
-          experience: this.state.experience,
-          city: this.state.city,
-        },
-      });
-      this.props.history.push(`/home`)
-    }
+        rider: this.state.rider,
+        terrain: this.state.terrain,
+        experience: this.state.experience,
+        city: this.state.city,
+      },
+    });
+    this.props.history.push(`/home`)
+  }
 
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
@@ -77,23 +77,14 @@ class RegisterPage extends Component {
 
     return (
       <div>
-        {/* {this.props.errors.registrationMessage && ( */}
-        {/*  <h2 */}
-        {/*      className="alert"
-             role="alert"
-           >
-             {this.props.errors.registrationMessage}
-           </h2> */}
-        {/* )} */}
-
-        <form onSubmit={this.registerUser} 
-        className="editUserDiv" noValidate autoComplete="off">
+        <form onSubmit={this.registerUser}
+          className="editUserDiv" noValidate autoComplete="off">
           <h1>Edit User Profile</h1>
-          <br/>
+          <br />
           <div>
             <label htmlFor="rider">
               Rider:
-              <br/>
+              <br />
               <Input
                 type="rider"
                 name="rider"
@@ -103,12 +94,12 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <div>
             <label htmlFor="terrain">
               Terrain:
-              <br/>
+              <br />
               <Input
                 type="terrain"
                 name="terrain"
@@ -117,13 +108,13 @@ class RegisterPage extends Component {
                 onChange={this.handleInputChangeFor('terrain')}
               />
             </label>
-            <br/>
-            <br/>
+            <br />
+            <br />
           </div>
           <div>
             <label htmlFor="experience">
               Experience:
-              <br/>
+              <br />
               <Input
                 type="number"
                 name="experience"
@@ -132,12 +123,12 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <div>
             <label htmlFor="city">
               City:
-              <br/>
+              <br />
               <Input
                 type="city"
                 name="city"
@@ -147,16 +138,16 @@ class RegisterPage extends Component {
             </label>
           </div>
         </form>
-        <div className= "saveEditUserButton">
-        <center>
-          <Button
-            type="button"
-            variant="contained" color="primary"
-            onClick = {()=>{this.editUser()}}
-          >
-            Save
+        <div className="saveEditUserButton">
+          <center>
+            <Button
+              type="button"
+              variant="contained" color="primary"
+              onClick={() => { this.editUser() }}
+            >
+              Save
           </Button>
-        </center>
+          </center>
         </div>
       </div>
     );

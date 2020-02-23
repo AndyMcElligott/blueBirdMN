@@ -67,6 +67,7 @@ form {
   border-radius: 2px;
   /* box-sizing: border-box; */
   text-align: center;
+  font-family: "snowblobs";
 }
 
 input {
@@ -92,10 +93,8 @@ input {
 }
 
 .newUserButton {
-  align-items: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-top: 25px;
+  margin-left: 50px;
 }
 
 .log-in:hover,
@@ -114,6 +113,10 @@ input {
 }
 
 .saveEditUserButton {
-    margin-top: 370px;
+  margin-top: 370px;
 }
-/* This line makes the "Register" and "Login" buttons look like links */
+
+.registerLoginBtn {
+  margin-top: 510px;
+  margin-left: 300px;
+}
