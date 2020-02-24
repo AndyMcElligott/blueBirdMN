@@ -68,6 +68,8 @@ body {
   margin-top: 3em;
   text-align: center;
   font-family: "snowblobs";
+  margin-left: 700px;
+  margin-right: 700px;
 }
 
 .alert {

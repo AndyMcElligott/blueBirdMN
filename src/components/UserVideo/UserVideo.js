@@ -62,7 +62,7 @@ class UserVideo extends Component {
                 url: this.state.user_video,
                 hill: this.props.reduxStore.selectedHillReducer
             }
-            })
+        })
     }
 
     liveView = () => {
@@ -109,14 +109,21 @@ class UserVideo extends Component {
                 <div className="userVideoDiv">
                     <Input
                         type="text"
-                        placeholder="URL"
+                        placeholder="YouTube URL"
                         name="terrain"
                         align="center"
+                        margin="dense"
+                        variant="filled"
+                        fullWidth
+                        InputProps={{
+                            shrink: true,
+                            className: classes.input,
+                        }}
                         className={classes.input}
                         value={this.state.user_video}
                         onChange={this.handleVideoChange}
                     />
-                    <br/>
+                    <br />
                     <br />
                     <Button
                         onClick={this.handleClick}
@@ -138,7 +145,7 @@ class UserVideo extends Component {
                                 <iframe width="560" height="315" src={userVid.youtube_id} frameborder="0" />
                             </div>
                         )
-                        })}
+                    })}
                 </div>
                 {/* <DeleteIcon className={classes.icon} fontSize="large"
                     onClick={() => this.props.dispatch(

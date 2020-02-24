@@ -64,7 +64,7 @@ class InfoPage extends Component {
             <Tab label="Hill Info" />
             <Tab label="Live View"
               onClick={() => { this.liveView() }} />
-            <Tab label="User Testimony"
+            <Tab label="User Video's"
               onClick={() => { this.userVideo() }} />
           </Tabs>
         </Paper>
