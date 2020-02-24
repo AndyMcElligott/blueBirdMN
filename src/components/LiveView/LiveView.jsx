@@ -106,7 +106,7 @@ class LiveView extends Component {
                     onClick = {()=>{this.userVideo()}} />
                 </Tabs>
             </Paper>
-            <div className="userVideoDiv">
+            <div className="liveVideoDiv">
                     {/* {this.props.userVideoReducer.map((userVid) => {
                         return ( */}
                             <div className="userVideoPlayerDiv">

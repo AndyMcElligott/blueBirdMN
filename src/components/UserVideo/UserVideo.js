@@ -134,18 +134,18 @@ class UserVideo extends Component {
                     > Submit URL
                     </Button>
                     <br />
-                    <h2> User Video's</h2>
+                    <div className="userVideoPlayer">
+                        <h2> User Video's</h2>
 
-                    {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/HvB8DUhIRgk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-
-                    {this.props.userVideoReducer.map((userVid) => {
-                        console.log(userVid)
-                        return (
-                            <div className="userVideoPlayerDiv">
-                                <iframe width="560" height="315" src={userVid.youtube_id} frameborder="0" />
-                            </div>
-                        )
-                    })}
+                        {this.props.userVideoReducer.map((userVid) => {
+                            console.log(userVid)
+                            return (
+                                <div className="userVideoPlayerDiv">
+                                    <iframe width="560" height="315" src={userVid.youtube_id} frameborder="0" />
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
                 {/* <DeleteIcon className={classes.icon} fontSize="large"
                     onClick={() => this.props.dispatch(

@@ -68,8 +68,17 @@ body {
   margin-top: 3em;
   text-align: center;
   font-family: "snowblobs";
-  margin-left: 700px;
+  margin-left: 600px;
   margin-right: 700px;
+}
+
+.liveVideoDiv {
+    margin-top: 3em;
+    text-align: center;
+}
+
+.userVideoPlayerDiv {
+    text-align: center;
 }
 
 .alert {
