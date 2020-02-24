@@ -112,6 +112,7 @@ class HillItem extends Component {
                             title={this.props.hill.name}
                         />
                         <CardMedia
+                            className="logo"
                             style={{ height: 1, paddingTop: '56.25%' }}
                             image={this.props.hill.logo}
                         >
