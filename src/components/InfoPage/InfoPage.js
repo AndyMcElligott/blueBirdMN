@@ -77,7 +77,8 @@ class InfoPage extends Component {
           <h2 className="hours">Hours of Operation:</h2>
             <h3 className="selectedHillName">{this.props.selectedHillReducer.hours}</h3>
           <h2 className="price">Lift Ticket Prices:</h2>
-          {/* add lift ticket prices to DB */}
+          <h2 className="selectedHillName"> $47 day pass for Adults</h2>
+          <h2 className="selectedHillName"> $27 day pass for Children</h2>
         </div>
         <div className="trailMapDiv">
           <img className="trailMap" src={this.props.selectedHillReducer.trail_map} />
