@@ -68,8 +68,8 @@ body {
   margin-top: 3em;
   text-align: center;
   font-family: "snowblobs";
-  margin-left: 600px;
-  margin-right: 700px;
+  /* margin-left: 600px;
+  margin-right: 600px; */
 }
 
 .liveVideoDiv {

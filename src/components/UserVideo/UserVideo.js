@@ -125,16 +125,17 @@ class UserVideo extends Component {
                     />
                     <br />
                     <br />
+                    <div className="userVideoPlayer">
                     <Button
                         onClick={this.handleClick}
                         label="Submit URL"
                         type="button"
                         className="link-button"
                         variant="contained" color="primary"
-                    > Submit URL
+                    > Submit
                     </Button>
                     <br />
-                    <div className="userVideoPlayer">
+                    
                         <h2> User Video's</h2>
 
                         {this.props.userVideoReducer.map((userVid) => {
