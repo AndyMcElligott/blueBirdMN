@@ -23,7 +23,31 @@ Run npm run client to open a new browser window.
 
 Screenshots:
 
- 
+Login:
+
+Login.png
+
+User Profile:
+
+UserProfile.png
+
+Local Hills:
+
+LocalHills.png
+
+Local Hill Info:
+
+LocalHillsInfo.png
+
+Local Hill Live Feed:
+
+LiveFeed.png
+
+Local Hill User Testimony:
+
+UserTestimony.png
+
+
 Usage
 Users must know to click on designated buttons, drop down arrows, and tabs to retrieve desired info, or edit, create, login, or register. Beyond that, the website is very intuitive with go back, cancel, edit and save buttons, as well as text areas that are labeled with the correlating data.
 Acknowledgement
