@@ -25,7 +25,7 @@ Screenshots:
 
 Login:
 
-![Login.png](./public/images/login.png)
+![Login](/public/images/login.png)
 
 User Profile:
 
